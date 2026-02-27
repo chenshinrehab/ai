@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import ClinicHoursModal from '@/components/ClinicHoursModal'
 import * as Fa from "react-icons/fa";
 
 export default function BookingPage() {
