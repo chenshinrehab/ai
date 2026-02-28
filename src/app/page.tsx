@@ -253,15 +253,17 @@ export default function Home() {
       </main>
 
       {/* --- 懸浮諮詢按鈕 --- */}
-      <MotionWrapper type="scale" delay={1} className="fixed bottom-10 right-10 z-50 group">
-        <a 
-          href="https://line.me/R/ti/p/@261RYSIY" 
-          target="_blank" rel="noopener noreferrer"
-          className="bg-[#06C755] text-white w-20 h-20 rounded-full shadow-2xl shadow-[#06C755]/20 hover:scale-110 active:scale-90 transition-all flex items-center justify-center border-4 border-white"
-        >
-          <FaCommentDots size={36} />
-        </a>
-      </MotionWrapper>
+{/* --- 懸浮諮詢按鈕 --- */}
+<MotionWrapper type="scale" delay={1} className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50 group">
+  <a 
+    href="https://line.me/R/ti/p/@261RYSIY" 
+    target="_blank" rel="noopener noreferrer"
+    className="bg-[#06C755] text-white w-14 h-14 md:w-20 md:h-20 rounded-full shadow-2xl shadow-[#06C755]/20 hover:scale-110 active:scale-90 transition-all flex items-center justify-center border-4 border-white"
+  >
+    {/* 手機版圖示 28px，電腦版 36px */}
+    <FaCommentDots className="text-[28px] md:text-[36px]" />
+  </a>
+</MotionWrapper>
     </div>
   );
 }
