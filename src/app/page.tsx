@@ -1,7 +1,8 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import MotionWrapper from '@/components/MotionWrapper'; 
 import { 
   FaStar, 
@@ -14,12 +15,37 @@ import {
   FaShieldHalved, 
   FaCommentDots 
 } from "react-icons/fa6";
-
-// 🔴 注意：在 'use client' 檔案中不可導出 metadata。
-// 請將 metadata 移至同層級的 layout.tsx 或將此檔改為 Server Component。
+import { AnimatePresence, motion } from 'framer-motion';
+// 💡 引入歐洲目的地資料庫
+import { europeCountries } from '@/data/europe';
 
 export default function Home() {
-  // 結構化資料內容
+  // --- 🔴 核心輪播邏輯優化 ---
+  const countries = Object.values(europeCountries);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // 每次渲染時先清除可能存在的舊計時器
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    // 設定新的計時器：5 秒切換一次
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % countries.length);
+    }, 5000); 
+
+    // 組件卸載時清除計時器，防止記憶體洩漏與亂跳
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [countries.length]);
+
+  const currentCountry = countries[currentIndex];
+  const displayImage = currentCountry.spots?.length > 0 
+    ? currentCountry.spots[0].image 
+    : currentCountry.image;
+  // --- 🔴 邏輯結束 ---
+
   const jsonLdData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness", 
@@ -33,42 +59,6 @@ export default function Home() {
       "addressCountry": "TW",
       "addressRegion": "Taiwan"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "25.0330",
-      "longitude": "121.5654"
-    },
-    "publicAccess": false,
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "歐洲包車旅遊服務清單",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "法國包車客製化旅遊",
-            "description": "專業華語司導，深度遊覽巴黎、南法普羅旺斯。"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "瑞士少女峰包車服務",
-            "description": "專車接送往返蘇黎世、格林德瓦，享受無憂旅程。"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "義大利深度包車旅行",
-            "description": "羅馬、佛羅倫斯、威尼斯私人司導服務。"
-          }
-        }
-      ]
-    },
     "sameAs": ["https://line.me/R/ti/p/@261RYSIY"],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -80,31 +70,51 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FDFCF9] text-slate-600 pb-20 relative overflow-x-hidden font-light bg-[url('/images/bg/linen-texture.png')] bg-repeat bg-center">
-      {/* 🟢 SEO Schema 注入 */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
 
-      {/* 背景裝飾圖形 */}
+      {/* 背景裝飾 */}
       <div className="absolute top-[10%] -left-48 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-3xl opacity-60 animate-blob-slow pointer-events-none"></div>
       <div className="absolute top-[50%] -right-48 w-[500px] h-[500px] bg-[#F2EFE9]/60 rounded-full blur-3xl opacity-50 animate-blob-slow animation-delay-2000 pointer-events-none"></div>
-      <div className="absolute bottom-[10%] left-24 w-[400px] h-[400px] bg-blue-50/40 rounded-full blur-3xl opacity-60 animate-blob-slow animation-delay-4000 pointer-events-none"></div>
 
       <main className="max-w-6xl mx-auto px-6 pt-12 space-y-24 relative z-10">
         
         {/* --- Section 1: Hero --- */}
         <MotionWrapper type="fadeInUp">
           <section className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-            <div className="md:w-1/2 relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-xl border-[12px] border-white shadow-slate-200/50">
-              <Image 
-                src="/images/europe-tour-hero.webp" 
-                alt="歐洲輕旅行 - 塞納河畔漫旅" 
-                fill priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:hidden"></div>
+            
+            {/* 🟢 修改後的自動輪播圖片區塊 */}
+            <div className="md:w-1/2 relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-xl border-[12px] border-white shadow-slate-200/50 group bg-white">
+              <Link href={`/europe/${currentCountry.id}`}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentCountry.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }} 
+                    className="relative w-full h-full"
+                  >
+                    <Image 
+                      src={displayImage} 
+                      alt={currentCountry.title} 
+                      fill priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                    />
+                    
+                    {/* 國家標籤 */}
+                    <div className="absolute bottom-6 left-6 z-10">
+                      <span className="bg-black/40 backdrop-blur-md text-white text-[10px] font-bold tracking-[0.2em] px-4 py-2 rounded-full uppercase border border-white/20 shadow-lg">
+                        {currentCountry.countryName} · 點擊探索
+                      </span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                  </motion.div>
+                </AnimatePresence>
+              </Link>
             </div>
 
             <div className="md:w-1/2 space-y-8 py-10">
@@ -118,33 +128,29 @@ export default function Home() {
                 <span className="italic text-[#7A9EAF]">漫旅歐洲包車客製化之美。</span>
               </h1>    
               <p className="text-lg leading-relaxed text-slate-600 font-light max-w-lg">
-                不趕路，只感受。專屬華語司導陪您走過塞納河畔，穿梭蘇黎世巷弄，享受一場全然放鬆的歐洲假期。
+                不趕路，只感受。專屬華語司機陪您走過塞納河畔，穿梭蘇黎世巷弄，享受一場全然放鬆的歐洲假期。
               </p>
 
               <div className="grid grid-cols-1 gap-6 pt-4 bg-white/50 p-6 rounded-2xl border border-white/80">
-  {/* 項目 1 */}
-  <div className="flex items-start gap-4 text-base md:text-lg">
-    <FaCircleCheck className="text-[#A3B18A] shrink-0 mt-1" size={22} />
-    <span className="font-medium text-slate-800">協助安排討論完整路線及行程</span>
-  </div>
-
-  {/* 項目 2 */}
-  <div className="flex items-start gap-4 text-base md:text-lg">
-    <FaSquareParking className="text-[#8E9AAF] shrink-0 mt-1" size={22} />
-    <span className="font-medium text-slate-800 leading-relaxed">
-      包含全歐境內停車費，過路費及司機小費，每天只要 
-      <span className="text-[#C88A2E] font-bold text-xl md:text-2xl mx-1 underline underline-offset-4 decoration-2">
-        650
-      </span> 
-      <span className="text-[#C88A2E] font-bold">歐元</span>
-    </span>
-  </div>
-</div>
-
+                <div className="flex items-start gap-4 text-base md:text-lg">
+                  <FaCircleCheck className="text-[#A3B18A] shrink-0 mt-1" size={22} />
+                  <span className="font-medium text-slate-800">協助安排討論完整路線及行程</span>
+                </div>
+                <div className="flex items-start gap-4 text-base md:text-lg">
+                  <FaSquareParking className="text-[#8E9AAF] shrink-0 mt-1" size={22} />
+                  <span className="font-medium text-slate-800 leading-relaxed">
+                    包含停車費、過路費及小費，每天只要 
+                    <span className="text-[#C88A2E] font-bold text-xl md:text-2xl mx-1 underline underline-offset-4 decoration-2">
+                      650
+                    </span> 
+                    <span className="text-[#C88A2E] font-bold">歐元起</span>
+                  </span>
+                </div>
+              </div>
 
               <div className="pt-8">
                 <a 
-                  href="#booking" 
+                  href="https://line.me/R/ti/p/@261RYSIY" 
                   className="inline-block px-12 py-5 bg-[#7A9EAF] text-white rounded-full hover:bg-[#8E9AAF] hover:shadow-xl hover:-translate-y-0.5 transition-all shadow-lg shadow-blue-200/40 text-sm tracking-widest font-bold uppercase"
                 >
                   開始您的旅程
@@ -165,7 +171,7 @@ export default function Home() {
                   <span className="text-[#C4A484]">把風景留給自己。</span>
                 </h2>
                 <p className="text-slate-500 text-base md:text-lg leading-relaxed font-light max-w-sm">
-                  我們的司導懂得駕駛，更懂得生活。解決退稅、代訂門票等瑣事。
+                  行程規劃師懂歐洲，且更懂得生活，為您安排每天客製化行程。
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-100">
@@ -206,11 +212,11 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 relative z-10">
               <div className="space-y-3 bg-white/40 p-7 rounded-2xl border border-white/60">
                 <h4 className="font-bold text-[#A3B18A] text-lg">Q: 需要提早多久預約？</h4>
-                <p className="text-slate-600 leading-relaxed text-sm">建議在出發前一個月與我們聯繫，我們會為您量身規劃第一版行程並保留車輛。</p>
+                <p className="text-slate-600 leading-relaxed text-sm">建議在出發前兩個月與我們聯繫，我們會為您量身規劃行程。</p>
               </div>
               <div className="space-y-3 bg-white/40 p-7 rounded-2xl border border-white/60">
                 <h4 className="font-bold text-[#A3B18A] text-lg">Q: 費用包含司導食宿嗎？</h4>
-                <p className="text-slate-600 leading-relaxed text-sm">是的，報價已包含司導住宿與餐飲費用，無隱藏消費，讓您行程更輕鬆。</p>
+                <p className="text-slate-600 leading-relaxed text-sm">是的，報價已包含司導住宿與餐飲費用，無隱藏消費。</p>
               </div>
             </div>
           </section>
@@ -223,7 +229,7 @@ export default function Home() {
               {[
                 { icon: <FaRoute />, title: "自訂行程", desc: "不再被時刻表束縛，您的喜好決定路線。" },
                 { icon: <FaCarSide />, title: "豪華車隊", desc: "精選賓士等級商務車，確保長途旅程舒適。" },
-                { icon: <FaShieldHalved />, title: "全程守護", desc: "合規保險與資深華語司導，旅程踏實安心。" }
+                { icon: <FaShieldHalved />, title: "全程守護", desc: "合規車輛與資深華語導遊，旅程踏實安心。" }
               ].map((item, idx) => (
                 <MotionWrapper 
                   key={idx} 
@@ -248,9 +254,6 @@ export default function Home() {
 
       {/* --- 懸浮諮詢按鈕 --- */}
       <MotionWrapper type="scale" delay={1} className="fixed bottom-10 right-10 z-50 group">
-        <div className="absolute right-full mr-5 top-1/2 -translate-y-1/2 bg-white px-5 py-3 rounded-xl shadow-2xl border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none text-md font-bold text-[#003366]">
-          線上專員免費諮詢估價
-        </div>
         <a 
           href="https://line.me/R/ti/p/@261RYSIY" 
           target="_blank" rel="noopener noreferrer"
