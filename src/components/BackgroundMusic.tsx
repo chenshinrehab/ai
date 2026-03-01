@@ -38,7 +38,7 @@ export default function BackgroundMusic() {
 
   return (
     <audio ref={audioRef} loop className="hidden">
-      <source src="/music/background-jazz.mp3" type="audio/mpeg" />
+      <source src="/music/background.mp3" type="audio/mpeg" />
     </audio>
   );
 }
