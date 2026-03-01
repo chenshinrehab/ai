@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import BackgroundMusic from '@/components/BackgroundMusic' // 💡 引入音樂組件
+import BackgroundMusic from '@/components/BackgroundMusic'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -37,15 +37,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-TW" className="scroll-smooth bg-white">
-      <body className={`${inter.className} bg-white text-slate-900 antialiased min-h-screen flex flex-col`}>
+    // 🟢 關鍵：在 html 層級就鎖死水平溢出
+    <html lang="zh-TW" className="scroll-smooth bg-white overflow-x-hidden">
+      <body className={`${inter.className} bg-white text-slate-900 antialiased min-h-screen flex flex-col overflow-x-hidden w-full relative`}>
         <Navigation />
         
-        <main className="flex-grow bg-white">
+        {/* 🟢 main 容器加入 w-full 與 relative，穩定動畫參考座標 */}
+        <main className="flex-grow bg-white w-full relative overflow-x-hidden">
             {children}
         </main>
         
-        {/* 🟢 背景音樂組件：放在 body 內，確保跨頁面不中斷 */}
         <BackgroundMusic />
         
         <Footer />
