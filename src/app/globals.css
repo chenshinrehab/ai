@@ -8,6 +8,17 @@
 }
 
 @layer base {
+  /* 🟢 核心修正：強制鎖定寬度，禁止水平滑動 */
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    /* 修正手機版彈性滾動造成的白邊 */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   h1 {
     @apply text-4xl font-bold mb-4;
     font-size: 2.25rem !important; 
@@ -28,18 +39,32 @@
   }
 }
 
+/* 🟢 手機版專用優化 */
 @media (max-width: 768px) {
   body {
     padding-bottom: 0;
-    /* 確保手機滑動時不會露出底層背景色 */
-    overscroll-behavior-y: none;
+    /* 移除 iOS Safari 左右晃動的彈性感，只保留上下滾動 */
+    overscroll-behavior-x: none;
+  }
+  
+  /* 確保所有圖片不會意外撐開網頁 */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
+/* 🟢 共用元件樣式 */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* 🟢 防止動畫元件在進場前產生的位移空白 */
+.motion-container {
+  overflow: hidden;
+  width: 100%;
 }
