@@ -10,20 +10,28 @@ export default function AboutDirectoryPage() {
   // 🟢 更新為智網的服務導覽項目
   const directoryItems = [
     {
-      slug: 'concept',
-      title: '我的理念',
-      subtitle: 'OUR VISION',
-      description: '我不懂程式碼，但我學會了與 AI 協作。幫助你掌握數位資產，拒絕被行銷公司綁架的技術賦能計畫。',
-      image: '/images/about/1.webp', // 請替換為您的圖片路徑
-      features: ['零基礎架站', '掌控數位資產', '超低維護成本'],
+      slug: 'next',
+      title: '次世代架構',
+      subtitle: 'NEXT-GEN ARCHITECTURE',
+      description: '告別過時笨重的 WordPress！採用 Next.js 現代化框架，不僅網頁載入極速順暢，徹底擺脫無止盡的外掛更新與臃腫代碼，更能打造出兼具美觀與效能的頂級網站。',
+      image: '/images/pro/2.webp', // 請替換為您的圖片路徑
+      features: ['Next.js 框架', '告別外掛包袱', '極速網頁體驗'],
     },
     {
-      slug: 'portfolio',
-      title: '成果展示',
-      subtitle: 'PORTFOLIO',
-      description: '看看我們如何透過 Next.js 現代化架構與 AI 協助，打造出極速、高轉換率且具備完美 SEO 體質的現代化網站。',
-      image: '/images/about/3.webp', // 請替換為您的圖片路徑
-      features: ['極速渲染', 'SEO 滿分', '自適應設計'],
+      slug: 'seo',
+      title: 'SEO 與 AI 強化',
+      subtitle: 'SEO & AEO OPTIMIZATION',
+      description: '在 AI 時代，擁有好網站還不夠。自架網頁讓你擁有 100% 的底層自由度，能精準埋設 Schema 結構化資料，全方位掌握 SEO、GEO（在地化）及 AEO（AI 搜尋），讓受眾與 AI 都能第一時間找到你。',
+      image: '/images/pro/3.webp', // 請替換為您的圖片路徑
+      features: ['精準 Schema', 'AEO/GEO 佈局', '掌握流量密碼'],
+    },
+    {
+      slug: 'function',
+      title: '功能隨心所欲',
+      subtitle: 'DIVERSE FEATURES',
+      description: '不再受限於套版軟體的死板框架！有了 AI 的協作，從懸浮視窗、預約系統到專屬的動態特效，你幾乎可以毫無限制地擴充任何想要的功能。（內含豐富功能展示影片）',
+      image: '/images/pro/4.webp', // 請替換為您的圖片路徑
+      features: ['高度客製化', 'AI 輔助開發', '無痛擴充功能'],
     }
   ]
 
@@ -40,10 +48,10 @@ export default function AboutDirectoryPage() {
         {/* --- 頁面標頭 --- */}
         <MotionWrapper type="fadeInUp" className="text-center mb-16 space-y-3">
           <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase">
-            About Zhiwang
+            Advantages of Next.js
           </span>
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
-            關於智網
+            自架優點
           </h1>
           <div className="w-16 h-[4px] bg-gradient-to-r from-blue-500 to-teal-400 rounded-full mx-auto mt-6"></div>
         </MotionWrapper>
@@ -53,7 +61,7 @@ export default function AboutDirectoryPage() {
           {directoryItems.map((item, idx) => (
             <MotionWrapper key={item.slug} type="fadeInUp">
               <Link 
-                href={`/about/${item.slug}`}
+                href={`/pro/${item.slug}`}
                 // 🟢 偶數靠左、奇數靠右的交錯排版
                 className={`group flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-stretch bg-white rounded-[2rem] overflow-hidden shadow-lg shadow-blue-900/5 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 block`}
               >

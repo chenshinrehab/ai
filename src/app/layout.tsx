@@ -22,10 +22,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '歐洲漫行-旅遊規劃師',
-    template: '%s | 歐洲漫行-旅遊規劃師'
+    default: '智網Ai引擎',
+    template: '%s | 智網Ai引擎'
   },
-  description: '在地華人經營，訂製旅遊包車服務 義大利、奧捷匈、瑞士、德法、西葡',
+  description: '從零到一，加速排名登頂，精準獲客',
   icons: {
     icon: '/favicon.svg',
   },

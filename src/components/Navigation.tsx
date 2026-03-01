@@ -5,17 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image' 
 import { usePathname } from 'next/navigation'
 
-// ✨ 精準引入 FA6 與 Si 圖示
 import { 
   FaFacebookF, 
-  FaInstagram, 
-  FaYoutube, 
-  FaCalendarCheck, 
+  FaLine, 
   FaHouse,      
   FaChevronDown, 
   FaCaretRight 
 } from "react-icons/fa6";
-import { SiThreads } from "react-icons/si";
 
 type SubItem = {
   name: string;
@@ -38,160 +34,111 @@ export default function Navigation() {
 
   const navItems: NavItem[] = [
     { 
-        name: '關於服務', 
+        name: '關於智網', 
         path: '/about',
         subItems: [
-            { name: '服務理念', path: '/about/concept' },
-            { name: '嚴選車隊介紹', path: '/about/fleet' },
-            { name: '旅客評價分享', path: '/about/reviews' },
+            { name: '我的理念', path: '/about/concept' },
+            { name: '成果展示', path: '/about/portfolio' },
         ]
     },
     { 
-        name: '我們的特色', 
-        path: '/whychooseus',
-    },
-    { 
-        name: '熱門路線', 
-        path: '/europe', 
+        name: '自架優點', 
+        path: '/pro', 
         subItems: [
-            { name: '義大利深度旅遊', path: '/europe/italy' },
-            { name: '瑞士優美絕境', path: '/europe/switzerland' },
-            { name: '德法經典之旅', path: '/europe/franceGermany' },
-            { name: '中歐奧捷匈巡禮', path: '/europe/centraleurope' }
+            { name: '新世代架構', path: '/pro/next' },
+            { name: 'SEO 強化', path: '/pro/seo' },
+            { name: '功能多樣', path: '/pro/function' }
         ]
     },
+    { 
+        name: '教學內容', 
+        path: '/courses',
+        subItems: [
+            { name: '課程大綱', path: '/courses/syllabus' },
+            { name: '服務內容', path: '/courses/services' },
+        ]
+    }
   ];
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency", 
-    "name": "Elegant Europe 優雅歐洲包車",
-    "image": "https://yourdomain.com/hero-image.jpg",
-    "url": "https://yourdomain.com",
-    "telephone": "+886-975-665-786",
-    "priceRange": "TWD",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "TW",
-      "addressRegion": "Taiwan"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "25.0330",
-      "longitude": "121.5654"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "歐洲包車旅遊服務清單",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "法國包車客製化旅遊",
-            "description": "專業華語司導，深度遊覽巴黎、南法普羅旺斯。"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "瑞士少女峰包車服務",
-            "description": "專車接送往返蘇黎世、格林德瓦，享受無憂旅程。"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "義大利深度包車旅行",
-            "description": "羅馬、佛羅倫斯、威尼斯私人司導服務。"
-          }
-        }
-      ]
-    },
-    "sameAs": ["https://line.me/R/ti/p/@261RYSIY"],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "email": "jimmyforjob2@gmail.com",
-      "availableLanguage": ["Chinese", "English"]
-    }
-  };
-
   return (
-    <header className="sticky top-0 z-50 bg-[#FDFCF9]/80 backdrop-blur-lg border-b border-[#EFECE6] transition-all duration-300">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
-
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 transition-all duration-300 shadow-sm shadow-blue-900/5">
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* --- Logo 與頂部區塊 --- */}
-        <div className="flex items-center justify-center md:justify-between py-4 md:py-5 border-b border-[#F2EFE9]">
+        {/* 手機版使用 justify-between 讓兩端對齊，電腦版 md:justify-between 維持佈局 */}
+        <div className="flex items-center justify-between py-4 border-b border-slate-50 relative">
           
+          {/* 左側標題區塊：手機版靠左，電腦版 md:absolute 居中 */}
           <Link href="/" className="flex items-center gap-3 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
-              <div className="relative w-14 h-14 md:w-20 md:h-20 overflow-hidden rounded-full border-[3px] border-white shadow-sm bg-white transition-transform group-hover:scale-105 shrink-0">
+              <div className="relative w-10 h-10 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white transition-transform group-hover:scale-105 shrink-0 flex items-center justify-center">
                   <Image 
-                    src="/images/logo.webp" 
-                    alt="歐洲包車旅遊 Logo" 
+                    src="/images/logo.png" 
+                    alt="智網 Ai 引擎 Logo" 
                     fill 
-                    sizes="(max-width: 768px) 56px, 80px"
+                    sizes="(max-width: 768px) 40px, 64px"
                     className="object-cover"
                   />
               </div>
-              <div className="text-left flex flex-col justify-center">
-                <div className="text-lg md:text-2xl font-serif italic text-slate-800 tracking-tight leading-tight">
-                  歐洲漫行-旅遊規劃師
+              <div className="flex flex-col items-start md:items-center justify-center text-left md:text-center">
+                <div className="text-base md:text-2xl font-bold text-slate-900 tracking-tight leading-tight">
+                  智網 Ai 引擎
                 </div>
-                <p className="text-[10px] md:text-[13px] text-slate-600 tracking-[0.1em] md:tracking-[0.3em] uppercase mt-1 md:mt-2 font-bold font-serif italic whitespace-nowrap">
-                  義大利 奧捷匈 瑞士 德法 西葡
+                <p className="text-[10px] md:text-[12px] text-teal-700 tracking-[0.05em] md:tracking-[0.2em] mt-0.5 md:mt-1.5 font-medium whitespace-nowrap">
+                  從零到一，加速排名登頂，精準獲客
                 </p>
               </div>
           </Link>
 
-          {/* 右側社群按鈕 */}
-          <div className="hidden md:flex items-center gap-3 ml-auto z-20">
-              <Link href="/" className="w-10 h-10 rounded-full bg-white text-[#8E9AAF] flex items-center justify-center hover:bg-slate-50 transition-colors border border-[#EFECE6] shadow-sm">
-                <FaHouse size={18} />
+          {/* 右側社群按鈕：手機版也顯示，但尺寸微縮 */}
+          <div className="flex items-center gap-2 md:gap-4 ml-auto z-20">
+              {/* 首頁按鈕 - 手機版隱藏，保持簡潔 */}
+              <Link href="/" className="hidden md:flex w-12 h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-all border border-slate-100 shadow-md">
+                <FaHouse size={22} />
               </Link>
-              <a href="https://www.facebook.com/profile.php?id=61579679421074" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:bg-blue-50 transition-colors border border-[#EFECE6] shadow-sm">
-                <FaFacebookF size={16} />
+
+              {/* Facebook 按鈕 */}
+              <a href="https://www.facebook.com/profile.php?id=61588071577543/" target="_blank" rel="noopener noreferrer" 
+                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:bg-blue-50 transition-all border border-blue-50 shadow-sm md:shadow-md">
+                <FaFacebookF size={16} className="md:hidden" />
+                <FaFacebookF size={22} className="hidden md:block" />
               </a>
-              <a href="https://www.instagram.com/wanderthrougheurope/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white text-[#E4405F] flex items-center justify-center hover:bg-pink-50 transition-colors border border-[#EFECE6] shadow-sm">
-                <FaInstagram size={18} />
-              </a>
-              <a href="https://www.threads.com/@wanderthrougheurope" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white text-slate-800 flex items-center justify-center hover:bg-slate-100 transition-colors border border-[#EFECE6] shadow-sm">
-                <SiThreads size={18} />
+
+              {/* Line 按鈕 */}
+              <a href="https://line.me/R/ti/p/@yourid" target="_blank" rel="noopener noreferrer" 
+                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:bg-green-50 transition-all border border-green-50 shadow-sm md:shadow-md">
+                <FaLine size={20} className="md:hidden" />
+                <FaLine size={28} className="hidden md:block" />
               </a>
           </div>
         </div>
 
         {/* --- 導覽選單 --- */}
-        <nav className="py-2 md:py-3 relative">
-            <ul className="flex justify-between md:justify-center items-center gap-1 md:gap-3">
+        <nav className="py-2 relative">
+            <ul className="flex justify-between md:justify-center items-center gap-1 md:gap-4">
               {navItems.map((item) => (
                 <li key={item.path} className="relative group flex-1 md:flex-none">
                     <Link 
                       href={item.path} 
                       className={`
-                        flex items-center justify-center px-1 md:px-5 py-2 text-[13.5px] md:text-[15px] rounded-full transition-all whitespace-nowrap tracking-tighter md:tracking-wide
+                        flex items-center justify-center px-1 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[15px] rounded-full transition-all whitespace-nowrap tracking-wide font-medium
                         ${isActive(item.path) 
-                          ? 'text-slate-800 font-bold bg-[#F2EFE9]' 
-                          : 'text-slate-500 hover:text-slate-800 hover:bg-[#F2EFE9]/50'}
+                          ? 'text-blue-600 bg-blue-50 font-bold' 
+                          : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}
                       `}
                     >
                       {item.name}
-                      {item.subItems && <FaChevronDown size={8} className="hidden md:block ml-1 opacity-30 group-hover:rotate-180 transition-transform duration-500" />}
+                      {item.subItems && <FaChevronDown size={10} className="hidden md:block ml-1.5 opacity-40 group-hover:rotate-180 transition-transform duration-300" />}
                     </Link>
 
                     {item.subItems && (
-                      <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-52 bg-white border border-[#EFECE6] rounded-[1.5rem] shadow-xl shadow-slate-200/30 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 transform md:group-hover:translate-y-0 translate-y-2">
+                      <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 transform md:group-hover:translate-y-0 translate-y-2">
                         <div className="py-2">
                             {item.subItems.map((sub) => (
                                 <Link 
                                     key={sub.path} href={sub.path}
-                                    className="block px-6 py-3 text-[13px] text-slate-500 hover:bg-[#FDFBF7] hover:text-slate-900 transition-colors"
+                                    className="block px-5 py-2.5 text-[14px] text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors"
                                 >
-                                    <FaCaretRight size={10} className="inline-block mr-2 text-[#C4A484] opacity-50" />
+                                    <FaCaretRight size={12} className="inline-block mr-2 text-blue-400 opacity-70" />
                                     {sub.name}
                                 </Link>
                             ))}
@@ -201,12 +148,12 @@ export default function Navigation() {
                 </li>
               ))}
               
-              <li className="flex-1 md:flex-none">
+              <li className="flex-1 md:flex-none pl-1 md:pl-2">
                 <Link 
-                  href="/booking" 
-                  className="flex items-center justify-center py-2 px-1 md:px-7 bg-[#7A9EAF] text-white rounded-full text-[13px] md:text-xs font-bold tracking-tighter md:tracking-[0.15em] hover:bg-[#8E9AAF] transition-all shadow-md shadow-blue-100/50 uppercase whitespace-nowrap"
+                  href="/enroll" 
+                  className="flex items-center justify-center py-2 px-2 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[12px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all uppercase whitespace-nowrap"
                 >
-                  立即諮詢
+                  報名課程
                 </Link>
               </li>
             </ul>
