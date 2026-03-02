@@ -43,7 +43,7 @@ export default function RootLayout({
         <Navigation />
         
         {/* 🟢 main 容器加入 w-full 與 relative，穩定動畫參考座標 */}
-        <main className="flex-grow bg-white w-full relative overflow-x-hidden">
+        <main className="flex-grow bg-white w-full relative overflow-x-hidden pt-32 md:pt-40">
             {children}
         </main>
         

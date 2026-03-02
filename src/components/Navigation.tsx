@@ -61,22 +61,22 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 transition-all duration-300 shadow-sm shadow-blue-900/5">
+    // 🟢 修改點：將 sticky 改為 fixed，確保在所有滾動情況下都懸浮在最頂部，並增加 z-[100] 確保層級最高
+    <header className="fixed top-0 left-0 w-full z-[100] bg-white/95 md:bg-white/80 md:backdrop-blur-lg border-b border-slate-100 shadow-sm shadow-blue-900/5">
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* --- Logo 與頂部區塊 --- */}
-        {/* 手機版使用 justify-between 讓兩端對齊，電腦版 md:justify-between 維持佈局 */}
         <div className="flex items-center justify-between py-4 border-b border-slate-50 relative">
           
-          {/* 左側標題區塊：手機版靠左，電腦版 md:absolute 居中 */}
           <Link href="/" className="flex items-center gap-3 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
-              <div className="relative w-10 h-10 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white transition-transform group-hover:scale-105 shrink-0 flex items-center justify-center">
+              <div className="relative w-10 h-10 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white shrink-0 flex items-center justify-center">
                   <Image 
                     src="/images/favicon.svg" 
                     alt="智網 Ai 引擎 Logo" 
                     fill 
                     sizes="(max-width: 768px) 40px, 64px"
                     className="object-cover"
+                    priority
                   />
               </div>
               <div className="flex flex-col items-start md:items-center justify-center text-left md:text-center">
@@ -89,23 +89,19 @@ export default function Navigation() {
               </div>
           </Link>
 
-          {/* 右側社群按鈕：手機版也顯示，但尺寸微縮 */}
           <div className="flex items-center gap-2 md:gap-4 ml-auto z-20">
-              {/* 首頁按鈕 - 手機版隱藏，保持簡潔 */}
-              <Link href="/" className="hidden md:flex w-12 h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-all border border-slate-100 shadow-md">
+              <Link href="/" className="hidden md:flex w-12 h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-colors border border-slate-100 shadow-md">
                 <FaHouse size={22} />
               </Link>
 
-              {/* Facebook 按鈕 */}
-              <a href="https://www.facebook.com/profile.php?id=61588071577543/" target="_blank" rel="noopener noreferrer" 
-                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:bg-blue-50 transition-all border border-blue-50 shadow-sm md:shadow-md">
+              <a href="https://www.facebook.com/profile.php?id=61588071577543&locale=zh_TW" target="_blank" rel="noopener noreferrer" 
+                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center border border-blue-50 shadow-sm">
                 <FaFacebookF size={16} className="md:hidden" />
                 <FaFacebookF size={22} className="hidden md:block" />
               </a>
 
-              {/* Line 按鈕 */}
               <a href="https://line.me/R/ti/p/@yourid" target="_blank" rel="noopener noreferrer" 
-                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:bg-green-50 transition-all border border-green-50 shadow-sm md:shadow-md">
+                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center border border-green-50 shadow-sm">
                 <FaLine size={20} className="md:hidden" />
                 <FaLine size={28} className="hidden md:block" />
               </a>
@@ -120,7 +116,7 @@ export default function Navigation() {
                     <Link 
                       href={item.path} 
                       className={`
-                        flex items-center justify-center px-1 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[15px] rounded-full transition-all whitespace-nowrap tracking-wide font-medium
+                        flex items-center justify-center px-1 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[15px] rounded-full transition-colors whitespace-nowrap tracking-wide font-medium
                         ${isActive(item.path) 
                           ? 'text-blue-600 bg-blue-50 font-bold' 
                           : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}
@@ -131,7 +127,7 @@ export default function Navigation() {
                     </Link>
 
                     {item.subItems && (
-                      <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 transform md:group-hover:translate-y-0 translate-y-2">
+                      <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-200">
                         <div className="py-2">
                             {item.subItems.map((sub) => (
                                 <Link 
@@ -151,7 +147,7 @@ export default function Navigation() {
               <li className="flex-1 md:flex-none pl-1 md:pl-2">
                 <Link 
                   href="/enroll" 
-                  className="flex items-center justify-center py-2 px-2 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[12px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all uppercase whitespace-nowrap"
+                  className="flex items-center justify-center py-2 px-2 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[12px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 transition-colors uppercase whitespace-nowrap shadow-sm"
                 >
                   報名課程
                 </Link>

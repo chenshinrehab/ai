@@ -8,7 +8,8 @@ import {
   FaRobot, 
   FaStethoscope, 
   FaPlaneDeparture,
-  FaArrowUpRightFromSquare, // 🟢 新增跳出視窗的圖標
+  FaArrowUpRightFromSquare,
+  FaGraduationCap,
   FaCode,
   FaServer
 } from 'react-icons/fa6'
@@ -17,18 +18,18 @@ import MotionWrapper from '@/components/MotionWrapper'
 export default function PortfolioPage() {
   return (
     // 🟢 科技感淺灰底色與細緻網格
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
       
-      {/* 🟢 背景裝飾 */}
-      <div className="absolute top-[5%] -left-32 w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
-      <div className="absolute top-[40%] -right-32 w-[400px] h-[400px] bg-teal-400/10 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+      {/* 🟢 背景裝飾：靜態柔光 */}
+      <div className="absolute top-[5%] -left-32 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-[40%] -right-32 w-[400px] h-[400px] bg-teal-400/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <main className="max-w-5xl mx-auto px-6 py-10 md:py-16 relative z-10">
         
         {/* ==========================================
-            頁面標頭
+            頁面標頭：快速淡入
            ========================================== */}
-        <MotionWrapper type="fadeInUp" className="text-center mb-16 space-y-3">
+        <MotionWrapper type="fadeIn" className="text-center mb-16 space-y-3">
           <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase">
             Our Portfolio
           </span>
@@ -44,29 +45,27 @@ export default function PortfolioPage() {
         <div className="space-y-16 md:space-y-24">
           
           {/* ==========================================
-              展示一：醫師個人與診所頁面 (Dr. Yichen)
+              展示一：醫師個人與診所頁面
              ========================================== */}
-          <MotionWrapper type="fadeInUp">
+          <MotionWrapper type="fadeIn">
             <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-blue-900/5 overflow-hidden">
               
               <div className="flex flex-col lg:flex-row">
-                {/* 🟢 左側：網頁預覽圖 (可點擊超連結) */}
+                {/* 🟢 左側：網頁預覽圖 - 移除 Scale 動畫 */}
                 <a 
                   href="https://www.dryichen.com.tw/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-full bg-slate-100 border-b lg:border-b-0 lg:border-r border-slate-100 group overflow-hidden block"
                 >
-                  <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
                   
-                  {/* 🟢 使用動態截圖 API 解決圖片空白問題，免放本機圖檔 */}
                   <img
                     src="/images/about/2.webp"
                     alt="專業醫師網站"
-                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
                   />
                   
-                  {/* 模擬瀏覽器頂部 UI */}
                   <div className="absolute top-0 left-0 w-full h-8 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center px-4 gap-2 z-20">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
@@ -80,15 +79,14 @@ export default function PortfolioPage() {
                     <FaStethoscope size={24} />
                   </div>
                   
-                  {/* 🟢 標題 (可點擊超連結) */}
                   <a href="https://www.dryichen.com.tw/" target="_blank" rel="noopener noreferrer" className="group inline-block mb-4">
-                    <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">
+                    <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors duration-200">
                       專業醫師與診所網站
                     </h2>
                   </a>
 
                   <p className="text-slate-600 leading-relaxed mb-6 font-normal">
-                    完全捨棄傳統外包與笨重的 WordPress，從零開始透過 AI 協作寫出的現代化醫療網站。不僅大幅提升了網頁載入速度，更針對在地化 SEO（GEO）進行了深度優化，讓有復健需求的患者能第一時間在搜尋引擎上找到診所。
+                    完全捨棄傳統外包與笨重的 WordPress，從零開始透過 AI 協作寫出的現代化醫療網站。針對在地化 SEO（GEO）深度優化，讓有復健需求的患者能第一時間找到診所。
                   </p>
                   <ul className="space-y-3 mb-8">
                     {[
@@ -103,13 +101,12 @@ export default function PortfolioPage() {
                     ))}
                   </ul>
 
-                  {/* 🟢 文字最下面新增按鈕：點我觀看 */}
                   <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
                     <a 
                       href="https://www.dryichen.com.tw/" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl text-sm font-bold tracking-widest hover:bg-blue-600 transition-all shadow-md group"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl text-sm font-bold tracking-widest hover:bg-blue-600 transition-all duration-200 shadow-md group"
                     >
                       點我觀看 <FaArrowUpRightFromSquare size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                     </a>
@@ -119,82 +116,56 @@ export default function PortfolioPage() {
                   </div>
                 </div>
               </div>
-{/* 下半部：AI 協作花絮 */}
-{/* 下半部：AI 協作花絮 */}
-<div className="bg-slate-50 border-t border-slate-100 p-8 md:p-10">
-  <div className="flex items-center gap-3 mb-6">
-    <FaRobot className="text-blue-500" size={20} />
-    <h3 className="text-lg font-bold text-slate-800">網頁實際成果展示</h3>
-  </div>
 
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-    
-    {/* 圖片 1 - 將 aspect-video 改為 aspect-[4/3] */}
-    <div className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white">
-      <Image 
-        src="/images/about/6.webp" 
-        alt="AI推薦病患來診所"
-        fill
-        className="object-contain transition-transform duration-700"
-      />
-      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent p-4 z-10">
-        <p className="text-white text-xs font-bold tracking-wide">AI推薦病患來診所</p>
-      </div>
-    </div>
+              {/* 下半部：網頁成果展示 */}
+              <div className="bg-slate-50 border-t border-slate-100 p-8 md:p-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <FaRobot className="text-blue-500" size={20} />
+                  <h3 className="text-lg font-bold text-slate-800">網頁實際成果展示</h3>
+                </div>
 
-    {/* 圖片 2 - 將 aspect-video 改為 aspect-[4/3] */}
-    <div className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white">
-      <Image 
-        src="/images/about/4.webp" 
-        alt="PRP在區域推薦第一名"
-        fill
-        className="object-contain transition-transform duration-700"
-      />
-      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent p-4 z-10">
-        <p className="text-white text-xs font-bold tracking-wide">PRP在區域推薦第一名</p>
-      </div>
-    </div>
-
-    {/* 圖片 3 - 將 aspect-video 改為 aspect-[4/3] */}
-    <div className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white">
-      <Image 
-        src="/images/about/5.webp" 
-        alt="震波在區域推薦第一名"
-        fill
-        className="object-contain transition-transform duration-700"
-      />
-      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent p-4 z-10">
-        <p className="text-white text-xs font-bold tracking-wide">震波在區域推薦第一名</p>
-      </div>
-    </div>
-
-  </div>
-</div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {[
+                    { src: "/images/about/6.webp", text: "AI推薦病患來診所" },
+                    { src: "/images/about/4.webp", text: "PRP在區域推薦第一名" },
+                    { src: "/images/about/5.webp", text: "震波在區域推薦第一名" }
+                  ].map((img, idx) => (
+                    <div key={idx} className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white">
+                      <Image 
+                        src={img.src} 
+                        alt={img.text}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-contain"
+                      />
+                      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent p-4 z-10">
+                        <p className="text-white text-xs font-bold tracking-wide">{img.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </MotionWrapper>
 
           {/* ==========================================
-              展示二：歐洲包車旅遊頁面 (Europe Navy)
+              展示二：歐洲包車旅遊頁面
              ========================================== */}
-          <MotionWrapper type="fadeInUp">
+          <MotionWrapper type="fadeIn">
             <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-blue-900/5 overflow-hidden flex flex-col lg:flex-row">
-              
-              {/* 🟢 左側：網頁預覽圖 (可點擊超連結) */}
+              {/* 🟢 左側：網頁預覽圖 */}
               <a 
                 href="https://europe-navy.vercel.app/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-full bg-slate-100 border-b lg:border-b-0 lg:border-r border-slate-100 group overflow-hidden order-1 lg:order-2 block"
               >
-                <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                
-                {/* 🟢 動態截圖 API */}
+                <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
                 <img
                   src="/images/about/3.webp"
                   alt="優雅歐洲包車旅遊平台"
-                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover object-top"
                 />
-                
                 <div className="absolute top-0 left-0 w-full h-8 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center px-4 gap-2 z-20">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
                     <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
@@ -208,15 +179,14 @@ export default function PortfolioPage() {
                   <FaPlaneDeparture size={24} />
                 </div>
                 
-                {/* 🟢 標題 (可點擊超連結) */}
                 <a href="https://europe-navy.vercel.app/" target="_blank" rel="noopener noreferrer" className="group inline-block mb-4">
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight group-hover:text-teal-600 transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight group-hover:text-teal-600 transition-colors duration-200">
                     優雅歐洲漫行 - 頂級旅遊服務平台
                   </h2>
                 </a>
 
                 <p className="text-slate-600 leading-relaxed mb-6 font-normal">
-                  一個專為歐洲高端包車客製化打造的展示網站。在這個專案中，我們運用了大量的流暢動畫與高質感 UI 元件，結合 AI 自動生成的旅遊路線結構化資料（Schema），讓網站在視覺上都達到了極致的平衡。
+                  專為歐洲高端包車客製化打造。結合 AI 自動生成的旅遊路線結構化資料（Schema），讓網站在視覺與自然搜尋排名達到平衡。
                 </p>
                 <ul className="space-y-3 mb-8">
                   {[
@@ -231,13 +201,12 @@ export default function PortfolioPage() {
                   ))}
                 </ul>
 
-                {/* 🟢 文字最下面新增按鈕：點我觀看 */}
                 <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <a 
                     href="https://europe-navy.vercel.app/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl text-sm font-bold tracking-widest hover:bg-teal-600 transition-all shadow-md group"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl text-sm font-bold tracking-widest hover:bg-teal-600 transition-all duration-200 shadow-md group"
                   >
                     點我觀看 <FaArrowUpRightFromSquare size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   </a>
@@ -246,17 +215,89 @@ export default function PortfolioPage() {
                   </span>
                 </div>
               </div>
-
             </div>
           </MotionWrapper>
+
+
+          {/* ==========================================
+    展示三：網頁製作教學與 SEO 強化平台
+    ========================================== */}
+<MotionWrapper type="fadeIn">
+  <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-blue-900/5 overflow-hidden flex flex-col lg:flex-row">
+    {/* 🟢 左側：網頁預覽圖 (維持交錯佈局，若展示二圖在右，此處可維持圖在左) */}
+    <a 
+      href="https://ai-zeta-dusky-55.vercel.app/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="w-full lg:w-1/2 relative min-h-[300px] lg:min-h-full bg-slate-100 border-b lg:border-b-0 lg:border-r border-slate-100 group overflow-hidden block"
+    >
+      <div className="absolute inset-0 bg-indigo-900/5 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
+      <img
+        src="/images/about/6.webp" // 請確保圖片路徑正確或替換
+        alt="Next.js 網頁架設教學與 SEO 強化"
+        className="absolute inset-0 w-full h-full object-cover object-top"
+      />
+      {/* 瀏覽器頂部 UI */}
+      <div className="absolute top-0 left-0 w-full h-8 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center px-4 gap-2 z-20">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+      </div>
+    </a>
+
+    {/* 右側：文字說明 */}
+    <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+      <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6">
+        <FaGraduationCap size={24} /> 
+      </div>
+      
+      <a href="https://ai-zeta-dusky-55.vercel.app/" target="_blank" rel="noopener noreferrer" className="group inline-block mb-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight group-hover:text-indigo-600 transition-colors duration-200">
+          Next.js 全方位網頁架設 - 從零開始的 SEO 教學
+        </h2>
+      </a>
+
+      <p className="text-slate-600 leading-relaxed mb-6 font-normal">
+        致力於推廣「不需寫程式也能架站」的高階架構。教導新手如何利用最新 Next.js 技術實現閃電般的載入速度，並透過實戰 SEO 策略讓搜尋排名自然提升。
+      </p>
+
+      <ul className="space-y-3 mb-8">
+        {[
+          '專為新手設計的 Next.js 無程式碼/低程式碼邏輯',
+          '深度 SEO 強化技術，包含核心網頁指標 (CWV) 優化',
+          '整合最新 AI 工具，自動化產出高品質行銷內容'
+        ].map((feat, i) => (
+          <li key={i} className="flex items-start gap-3 text-slate-700 font-medium text-sm md:text-base">
+            <FaCircleCheck className="text-indigo-500 shrink-0 mt-1" size={16} />
+            {feat}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <a 
+          href="https://ai-zeta-dusky-55.vercel.app/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl text-sm font-bold tracking-widest hover:bg-indigo-600 transition-all duration-200 shadow-md group"
+        >
+          點我觀看 <FaArrowUpRightFromSquare size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+        </a>
+        <span className="inline-block px-4 py-2 bg-indigo-50 text-indigo-700 text-[10px] font-bold tracking-widest rounded-md uppercase">
+          # SEO & EDUCATION
+        </span>
+      </div>
+    </div>
+  </div>
+</MotionWrapper>
 
         </div>
 
         {/* --- 底部引導區 --- */}
-        <MotionWrapper type="fadeInUp" className="mt-20 text-center">
+        <MotionWrapper type="fadeIn" className="mt-20 text-center">
             <Link 
               href="/enroll" 
-              className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-blue-600 text-white rounded-full text-[13px] font-bold tracking-[0.2em] hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all shadow-md uppercase active:scale-95"
+              className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-blue-600 text-white rounded-full text-[13px] font-bold tracking-[0.2em] hover:bg-blue-700 hover:shadow-lg transition-all active:scale-95"
             >
               我也想擁有自己的網站 <FaArrowRight size={14} />
             </Link>
