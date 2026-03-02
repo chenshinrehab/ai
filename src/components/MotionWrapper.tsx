@@ -1,64 +1,83 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 interface Props {
   children: ReactNode;
-  delay?: number;
+  delay?: number; // 單位為 ms
   className?: string;
   type?: "fadeInUp" | "stagger" | "scale";
 }
 
-export default function MotionWrapper({ children, delay = 0, className, type = "fadeInUp" }: Props) {
-  // 💡 通用的 Viewport 設定，確保動畫只執行一次，並在進入視窗 10% 時觸發
-  const viewportConfig = { once: true, amount: 0.1 };
+export default function MotionWrapper({ children, delay = 0, className = "", type = "fadeInUp" }: Props) {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
 
-  if (type === "stagger") {
-    return (
-      <motion.div
-        initial="initial"
-        whileInView="whileInView"
-        viewport={viewportConfig}
-        variants={{
-          initial: {},
-          whileInView: { transition: { staggerChildren: 0.15, delayChildren: delay } }
-        }}
-        className={className}
-      >
-        {children}
-      </motion.div>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // 使用 requestAnimationFrame 確保在瀏覽器繪製幀觸發，達到極致流暢
+          requestAnimationFrame(() => {
+            setIsVisible(true);
+          });
+          // 觸發後立即停止偵測，釋放記憶體
+          if (elementRef.current) observer.unobserve(elementRef.current);
+        }
+      },
+      {
+        threshold: 0.01,
+        rootMargin: '0px 0px -5% 0px' // 稍微進入視區才觸發，提升感知效能
+      }
     );
-  }
 
-  // 💡 純粹的動畫數值
-  const variants = {
-    fadeInUp: {
-      initial: { opacity: 0, y: 20 },
-      whileInView: { opacity: 1, y: 0 },
-    },
-    scale: {
-      initial: { opacity: 0, scale: 0.95 },
-      whileInView: { opacity: 1, scale: 1 },
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // 根據 type 決定初始樣式與進場樣式
+  const getInitialStyles = () => {
+    switch (type) {
+      case "scale":
+        return "opacity-0 scale-[0.96] translate-z-0";
+      case "fadeInUp":
+      default:
+        return "opacity-0 translate-y-[15px] md:translate-y-[30px] translate-z-0";
+    }
+  };
+
+  const getVisibleStyles = () => {
+    switch (type) {
+      case "scale":
+        return "opacity-100 scale-100 translate-z-0";
+      case "fadeInUp":
+      default:
+        return "opacity-100 translate-y-0 translate-z-0";
     }
   };
 
   return (
-    <motion.div
-      initial="initial"
-      whileInView="whileInView"
-      viewport={viewportConfig} // 🟢 移到這裡才是正確的獨立屬性
-      variants={variants[type as keyof typeof variants]}
-      transition={{ 
-        duration: 0.6, 
-        delay, 
-        ease: [0.21, 0.47, 0.32, 0.98] // 🟢 使用更平滑的貝茲曲線減少抖動
+    <div
+      ref={elementRef}
+      className={`
+        ${className}
+        ${isVisible ? getVisibleStyles() : getInitialStyles()}
+        transition-all duration-700 ease-[cubic-bezier(0.21,0.47,0.32,0.98)]
+      `}
+      style={{
+        // 使用 CSS 變數處理延遲，減少 Inline Style 運算
+        transitionDelay: `${delay}ms`,
+        // 強制開啟 3D GPU 加速，徹底解決卡頓
+        transformStyle: 'preserve-3d',
+        backfaceVisibility: 'hidden',
+        willChange: isVisible ? 'auto' : 'transform, opacity',
+        pointerEvents: isVisible ? 'auto' : 'none',
       }}
-      // 🟢 加上 willChange 告訴瀏覽器這是一個會動的層，優化效能
-      style={{ willChange: "transform, opacity" }}
-      className={className}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

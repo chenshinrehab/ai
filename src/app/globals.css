@@ -69,18 +69,3 @@
   width: 100%;
 }
 
-/* --- 紅框除錯工具 (除錯完畢請刪除或註解掉) --- */
-
-/* 1. 幫所有元件加上淡紅框 */
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.2) !important;
-}
-
-/* 2. 幫「真正超出螢幕寬度」的兇手加上深紅厚框與黃色背景 */
-/* 這是利用 CSS 偵測寬度溢出的邏輯 */
-*:where(:not(html, body)) {
-  outline: 2px solid red !important;
-  outline-offset: -2px;
-}
-
-/* 3. 在手機螢幕右側如果看到任何紅框，那就是導致你移位的原因 */

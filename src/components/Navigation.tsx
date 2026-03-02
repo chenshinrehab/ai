@@ -61,64 +61,66 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 transition-all duration-300 shadow-sm shadow-blue-900/5 w-full overflow-hidden">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 transition-all duration-300 shadow-sm shadow-blue-900/5">
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* --- Logo 與頂部區塊 --- */}
-        <div className="flex items-center justify-between py-3 md:py-4 border-b border-slate-50 relative">
+        {/* 手機版使用 justify-between 讓兩端對齊，電腦版 md:justify-between 維持佈局 */}
+        <div className="flex items-center justify-between py-4 border-b border-slate-50 relative">
           
-          {/* 左側標題區塊：限制最大寬度防止擠壓右側 */}
-          <Link href="/" className="flex items-center gap-2 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10 max-w-[65%] md:max-w-none">
-              <div className="relative w-9 h-9 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white shrink-0 flex items-center justify-center">
+          {/* 左側標題區塊：手機版靠左，電腦版 md:absolute 居中 */}
+          <Link href="/" className="flex items-center gap-3 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
+              <div className="relative w-10 h-10 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white transition-transform group-hover:scale-105 shrink-0 flex items-center justify-center">
                   <Image 
-                    src="/images/logo.webp" 
+                    src="/images/favicon.svg" 
                     alt="智網 Ai 引擎 Logo" 
                     fill 
-                    priority
-                    sizes="(max-width: 768px) 36px, 64px"
-                    className="object-cover transition-transform group-hover:scale-105"
+                    sizes="(max-width: 768px) 40px, 64px"
+                    className="object-cover"
                   />
               </div>
-              <div className="flex flex-col items-start md:items-center justify-center overflow-hidden">
-                <div className="text-[15px] md:text-2xl font-bold text-slate-900 tracking-tight leading-tight truncate w-full">
+              <div className="flex flex-col items-start md:items-center justify-center text-left md:text-center">
+                <div className="text-base md:text-2xl font-bold text-slate-900 tracking-tight leading-tight">
                   智網 Ai 引擎
                 </div>
-                <p className="text-[9px] md:text-[12px] text-teal-700 tracking-tight md:tracking-[0.2em] mt-0.5 font-medium whitespace-nowrap overflow-hidden text-ellipsis">
-                  加速排名登頂，精準獲客
+                <p className="text-[10px] md:text-[12px] text-teal-700 tracking-[0.05em] md:tracking-[0.2em] mt-0.5 md:mt-1.5 font-medium whitespace-nowrap">
+                  從零到一，加速排名登頂，精準獲客
                 </p>
               </div>
           </Link>
 
-          {/* 右側社群按鈕 */}
-          <div className="flex items-center gap-1.5 md:gap-4 ml-auto z-20 shrink-0">
-              <Link href="/" className="hidden md:flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-all border border-slate-100 shadow-sm">
-                <FaHouse size={20} />
+          {/* 右側社群按鈕：手機版也顯示，但尺寸微縮 */}
+          <div className="flex items-center gap-2 md:gap-4 ml-auto z-20">
+              {/* 首頁按鈕 - 手機版隱藏，保持簡潔 */}
+              <Link href="/" className="hidden md:flex w-12 h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-all border border-slate-100 shadow-md">
+                <FaHouse size={22} />
               </Link>
 
+              {/* Facebook 按鈕 */}
               <a href="https://www.facebook.com/profile.php?id=61588071577543/" target="_blank" rel="noopener noreferrer" 
-                 className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:bg-blue-50 transition-all border border-blue-50 shadow-sm">
-                <FaFacebookF size={14} className="md:hidden" />
+                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:bg-blue-50 transition-all border border-blue-50 shadow-sm md:shadow-md">
+                <FaFacebookF size={16} className="md:hidden" />
                 <FaFacebookF size={22} className="hidden md:block" />
               </a>
 
+              {/* Line 按鈕 */}
               <a href="https://line.me/R/ti/p/@yourid" target="_blank" rel="noopener noreferrer" 
-                 className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:bg-green-50 transition-all border border-green-50 shadow-sm">
-                <FaLine size={18} className="md:hidden" />
+                 className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:bg-green-50 transition-all border border-green-50 shadow-sm md:shadow-md">
+                <FaLine size={20} className="md:hidden" />
                 <FaLine size={28} className="hidden md:block" />
               </a>
           </div>
         </div>
 
         {/* --- 導覽選單 --- */}
-        {/* 🟢 修正：no-scrollbar 樣式已移至 globals.css，這裡直接套用 */}
-        <nav className="py-2 relative w-full overflow-x-auto no-scrollbar scroll-smooth">
-            <ul className="flex justify-start md:justify-center items-center gap-1 md:gap-4 min-w-max md:min-w-0 px-1">
+        <nav className="py-2 relative">
+            <ul className="flex justify-between md:justify-center items-center gap-1 md:gap-4">
               {navItems.map((item) => (
-                <li key={item.path} className="relative group">
+                <li key={item.path} className="relative group flex-1 md:flex-none">
                     <Link 
                       href={item.path} 
                       className={`
-                        flex items-center justify-center px-3 md:px-5 py-2 text-[12px] md:text-[15px] rounded-full transition-all whitespace-nowrap tracking-wide font-medium
+                        flex items-center justify-center px-1 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[15px] rounded-full transition-all whitespace-nowrap tracking-wide font-medium
                         ${isActive(item.path) 
                           ? 'text-blue-600 bg-blue-50 font-bold' 
                           : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}
@@ -146,10 +148,10 @@ export default function Navigation() {
                 </li>
               ))}
               
-              <li className="pl-2">
+              <li className="flex-1 md:flex-none pl-1 md:pl-2">
                 <Link 
                   href="/enroll" 
-                  className="flex items-center justify-center py-1.5 px-4 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[12px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all uppercase whitespace-nowrap shadow-md"
+                  className="flex items-center justify-center py-2 px-2 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[12px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all uppercase whitespace-nowrap"
                 >
                   報名課程
                 </Link>
