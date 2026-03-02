@@ -26,11 +26,16 @@
     color: rgb(var(--foreground-rgb));
     background-color: rgb(var(--background-rgb)) !important;
     @apply antialiased;
-    /* 🛠️ 效能鎖：優化字體渲染與防止水平溢出 */
+    
+    /* 🛠️ 修正：移除 overflow-x: hidden，改用更安全的方式防止水平溢出 */
+    /* 同時確保垂直方向可以自由捲動 */
+    position: relative;
+    min-height: 100vh;
+    overflow-y: auto; 
+    overflow-x: clip; /* clip 是現代瀏覽器更安全的選擇，不會鎖死捲動 */
+    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden; 
-    width: 100%;
   }
 }
 
@@ -40,10 +45,12 @@
 @media (max-width: 768px) {
   body {
     padding-bottom: 0;
-    overscroll-behavior-y: none;
+    /* ❌ 移除 overscroll-behavior-y: none; 這是導致無法滑動的主因 */
+    /* ✅ 改用這個來優化手機捲動手感 */
+    -webkit-overflow-scrolling: touch; 
   }
 
-  /* 1. 關閉重度消耗 GPU 的毛玻璃效果，改用純色確保滑動不卡頓 */
+  /* 1. 關閉重度消耗 GPU 的毛玻璃效果 */
   .backdrop-blur, 
   .backdrop-blur-md, 
   .backdrop-blur-lg {
@@ -52,15 +59,13 @@
     background-color: rgba(255, 255, 255, 0.98) !important;
   }
 
-  /* 2. 針對大型裝飾球的 Blur 濾鏡降級 */
-  /* 將原本透過 filter: blur() 產生的效果改由漸層取代，能大幅減少 FPS 掉幀 */
+  /* 2. 濾鏡降級 */
   .blur-3xl, .blur-2xl {
     filter: none !important;
-    /* 改用透明度來保持視覺上的柔和 */
     opacity: 0.4 !important;
   }
 
-  /* 3. 關閉複雜陰影以減輕合成器壓力 (可選，若仍卡頓可開啟) */
+  /* 3. 調整陰影 */
   .shadow-xl {
     @apply shadow-lg;
   }
