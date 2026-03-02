@@ -61,21 +61,20 @@ export default function Navigation() {
   ];
 
   return (
-    // 🟢 修正：加入 overflow-hidden 確保 Header 絕對不會成為水平溢出的元兇
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 transition-all duration-300 shadow-sm shadow-blue-900/5 w-full overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* --- Logo 與頂部區塊 --- */}
         <div className="flex items-center justify-between py-3 md:py-4 border-b border-slate-50 relative">
           
-          {/* 左側標題區塊：手機版限制寬度，避免擠壓右側社群按鈕 */}
-          <Link href="/" className="flex items-center gap-2 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10 max-w-[70%] md:max-w-none">
+          {/* 左側標題區塊：限制最大寬度防止擠壓右側 */}
+          <Link href="/" className="flex items-center gap-2 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10 max-w-[65%] md:max-w-none">
               <div className="relative w-9 h-9 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white shrink-0 flex items-center justify-center">
                   <Image 
                     src="/images/logo.webp" 
                     alt="智網 Ai 引擎 Logo" 
                     fill 
-                    priority // 🟢 頂部圖片優先載入
+                    priority
                     sizes="(max-width: 768px) 36px, 64px"
                     className="object-cover transition-transform group-hover:scale-105"
                   />
@@ -84,28 +83,24 @@ export default function Navigation() {
                 <div className="text-[15px] md:text-2xl font-bold text-slate-900 tracking-tight leading-tight truncate w-full">
                   智網 Ai 引擎
                 </div>
-                {/* 🟢 手機版副標題稍微縮小並防止換行撐開 */}
                 <p className="text-[9px] md:text-[12px] text-teal-700 tracking-tight md:tracking-[0.2em] mt-0.5 font-medium whitespace-nowrap overflow-hidden text-ellipsis">
                   加速排名登頂，精準獲客
                 </p>
               </div>
           </Link>
 
-          {/* 右側社群按鈕：縮小手機版尺寸與間距 */}
+          {/* 右側社群按鈕 */}
           <div className="flex items-center gap-1.5 md:gap-4 ml-auto z-20 shrink-0">
-              {/* 首頁按鈕 - 手機版隱藏 */}
-              <Link href="/" className="hidden md:flex w-12 h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-all border border-slate-100 shadow-md">
-                <FaHouse size={22} />
+              <Link href="/" className="hidden md:flex w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-slate-400 items-center justify-center hover:bg-slate-50 transition-all border border-slate-100 shadow-sm">
+                <FaHouse size={20} />
               </Link>
 
-              {/* Facebook 按鈕 */}
               <a href="https://www.facebook.com/profile.php?id=61588071577543/" target="_blank" rel="noopener noreferrer" 
                  className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:bg-blue-50 transition-all border border-blue-50 shadow-sm">
                 <FaFacebookF size={14} className="md:hidden" />
                 <FaFacebookF size={22} className="hidden md:block" />
               </a>
 
-              {/* Line 按鈕 */}
               <a href="https://line.me/R/ti/p/@yourid" target="_blank" rel="noopener noreferrer" 
                  className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:bg-green-50 transition-all border border-green-50 shadow-sm">
                 <FaLine size={18} className="md:hidden" />
@@ -115,7 +110,7 @@ export default function Navigation() {
         </div>
 
         {/* --- 導覽選單 --- */}
-        {/* 🟢 修正：手機版加入橫向捲動保護 (overflow-x-auto)，並隱藏捲動條 */}
+        {/* 🟢 修正：no-scrollbar 樣式已移至 globals.css，這裡直接套用 */}
         <nav className="py-2 relative w-full overflow-x-auto no-scrollbar scroll-smooth">
             <ul className="flex justify-start md:justify-center items-center gap-1 md:gap-4 min-w-max md:min-w-0 px-1">
               {navItems.map((item) => (
@@ -133,7 +128,6 @@ export default function Navigation() {
                       {item.subItems && <FaChevronDown size={10} className="hidden md:block ml-1.5 opacity-40 group-hover:rotate-180 transition-transform duration-300" />}
                     </Link>
 
-                    {/* 下拉選單：僅在電腦版顯示，確保手機版不會因為彈出選單而溢出 */}
                     {item.subItems && (
                       <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 transform md:group-hover:translate-y-0 translate-y-2">
                         <div className="py-2">
@@ -152,7 +146,6 @@ export default function Navigation() {
                 </li>
               ))}
               
-              {/* 報名課程按鈕 */}
               <li className="pl-2">
                 <Link 
                   href="/enroll" 
@@ -164,17 +157,6 @@ export default function Navigation() {
             </ul>
         </nav>
       </div>
-      
-      {/* 隱藏捲動條的內聯樣式 */}
-      <style jsx>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </header>
   )
 }
