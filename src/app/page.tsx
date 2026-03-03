@@ -14,17 +14,19 @@ import {
   FaShieldHalved, 
   FaCommentDots,
   FaMagnifyingGlassChart,
-  FaArrowRight
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa6";
 
-// 💡 服務內容資料庫：已補上對應的跳轉連結
+// 💡 服務內容資料庫
 const serviceItems = [
   {
     id: 'ai-dev',
     title: '醫師個人網頁實測', 
     desc: '零基礎也能寫出專業程式碼',
     tag: 'MEDICAL',
-    image: '/images/about/2.webp', // 請確保路徑正確
+    image: '/images/about/2.webp',
     link: 'https://www.dryichen.com.tw/'
   },
   {
@@ -32,7 +34,7 @@ const serviceItems = [
     title: '歐洲包車旅遊導覽', 
     desc: '掌握搜尋引擎曝光的真實邏輯',
     tag: 'TRAVEL',
-    image: '/images/about/3.webp', // 請確保路徑正確
+    image: '/images/about/3.webp',
     link: 'https://europe-navy.vercel.app/'
   },
   {
@@ -40,25 +42,31 @@ const serviceItems = [
     title: '網頁架設教學與 SEO', 
     desc: '網域與程式碼永遠屬於你',
     tag: 'EDUCATION',
-    image: '/images/about/6.webp', // 請確保路徑正確
+    image: '/images/about/7.webp',
     link: 'https://ai-zeta-dusky-55.vercel.app/'
   }
 ];
 
 export default function Home() {
-  // --- 🔴 核心輪播邏輯優化：參考歐洲旅遊版本 ---
+  // --- 🔴 核心輪播邏輯優化 ---
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    // 每次渲染時清除舊計時器
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % serviceItems.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + serviceItems.length) % serviceItems.length);
+  };
+
+  const resetTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(handleNext, 4000);
+  };
 
-    // 設定 4 秒切換一次
-    timerRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % serviceItems.length);
-    }, 4000); 
-
+  useEffect(() => {
+    resetTimer();
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
@@ -70,60 +78,70 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-600 pb-16 relative overflow-x-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
       
-      {/* 🟢 背景裝飾 */}
       <div className="absolute top-[10%] -left-48 w-[600px] h-[600px] bg-blue-400/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
       <div className="absolute top-[50%] -right-48 w-[500px] h-[500px] bg-indigo-400/5 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
       <main className="max-w-6xl mx-auto px-6 pt-10 space-y-12 md:space-y-16 relative z-10">
         
-        {/* --- Section 1: Hero --- */}
         <MotionWrapper type="fadeInUp">
           <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20">
             
-            {/* 🟢 輪播圖片區塊：導入 AnimatePresence 實現輕柔換場 */}
+            {/* 🟢 輪播圖片區塊 */}
             <div className="md:w-1/2 relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-[8px] border-white bg-white group">
+                
+                {/* 🔴 修改：手機與電腦皆顯示的左右按鈕 */}
+                <div className="block">
+                  <button 
+                    onClick={(e) => { e.preventDefault(); handlePrev(); resetTimer(); }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-slate-700 shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all hover:bg-blue-600 hover:text-white active:scale-90"
+                  >
+                    <FaChevronLeft size={16} />
+                  </button>
+                  <button 
+                    onClick={(e) => { e.preventDefault(); handleNext(); resetTimer(); }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-slate-700 shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all hover:bg-blue-600 hover:text-white active:scale-90"
+                  >
+                    <FaChevronRight size={16} />
+                  </button>
+                </div>
+
                 <Link 
                   href={currentService.link} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="relative block w-full h-full cursor-pointer overflow-hidden"
                 >
-                    {/* 使用 AnimatePresence 處理換場動畫 */}
                     <AnimatePresence mode="wait" initial={false}>
                       <motion.div
-                        key={currentIndex} // key 改變時觸發動畫
+                        key={currentIndex}
+                        // 🔴 修改：移除 drag 相關手勢屬性
                         initial={{ opacity: 0 }}
                         animate={{ 
                           opacity: 1,
-                          transition: { duration: 1.5, ease: "easeOut" } // 🟢 輕柔浮現
+                          transition: { duration: 1.5, ease: "easeOut" } 
                         }}
                         exit={{ 
                           opacity: 0,
-                          transition: { duration: 0.8, ease: "easeIn" }  // 🟢 俐落退場
+                          transition: { duration: 0.8, ease: "easeIn" }
                         }}
                         className="relative w-full h-full"
                       >
-                        {/* 底層文字備份 */}
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
                            <span className="text-blue-300 font-bold tracking-widest text-lg">{currentService.title}</span>
                         </div>
 
-                        {/* 圖片 */}
                         <Image 
                           src={currentService.image} 
                           alt={currentService.title} 
                           fill 
                           priority
-                          className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                          className="object-cover transition-transform duration-1000 group-hover:scale-110 pointer-events-none" 
                         /> 
-                        
-                        {/* 漸層遮罩 */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                       </motion.div>
                     </AnimatePresence>
 
-                    {/* 左下角標籤：放在 AnimatePresence 外層確保標籤本身不隨圖片閃爍，或放在內層隨圖片換內容 */}
-                    <div className="absolute bottom-6 left-6 z-10">
+                    <div className="absolute bottom-6 left-6 z-10 pointer-events-none">
                       <span className="bg-white/95 text-blue-700 text-[10px] font-bold tracking-[0.2em] px-4 py-2 rounded-full uppercase border border-blue-100/50 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 flex items-center gap-2">
                         {currentService.tag} · 點擊參觀 <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
                       </span>
@@ -264,7 +282,6 @@ export default function Home() {
 
       </main>
 
-      {/* --- 懸浮諮詢按鈕 --- */}
       <MotionWrapper type="scale" className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50">
         <a 
           href="https://line.me/R/ti/p/@yourid" 

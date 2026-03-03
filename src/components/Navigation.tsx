@@ -108,52 +108,55 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* --- 導覽選單 --- */}
-        <nav className="py-2 relative">
-            <ul className="flex justify-between md:justify-center items-center gap-1 md:gap-4">
-              {navItems.map((item) => (
-                <li key={item.path} className="relative group flex-1 md:flex-none">
-                    <Link 
-                      href={item.path} 
-                      className={`
-                        flex items-center justify-center px-1 md:px-5 py-2 md:py-2.5 text-[12px] md:text-[15px] rounded-full transition-colors whitespace-nowrap tracking-wide font-medium
-                        ${isActive(item.path) 
-                          ? 'text-blue-600 bg-blue-50 font-bold' 
-                          : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}
-                      `}
-                    >
-                      {item.name}
-                      {item.subItems && <FaChevronDown size={10} className="hidden md:block ml-1.5 opacity-40 group-hover:rotate-180 transition-transform duration-300" />}
-                    </Link>
+     {/* --- 導覽選單 --- */}
+<nav className="py-2 relative">
+    <ul className="flex justify-between md:justify-center items-center gap-1 md:gap-4">
+      {navItems.map((item) => (
+        <li key={item.path} className="relative group flex-1 md:flex-none">
+            <Link 
+              href={item.path} 
+              className={`
+                flex items-center justify-center px-1 md:px-5 py-2 md:py-2.5 
+                /* 🔴 修改：手機版字體調大為 14px，並增加粗細與字距 */
+                text-[14px] md:text-[15px] font-semibold md:font-medium tracking-widest md:tracking-wide
+                rounded-full transition-colors whitespace-nowrap
+                ${isActive(item.path) 
+                  ? 'text-blue-600 bg-blue-50 font-bold' 
+                  : 'text-slate-700 hover:text-blue-600 hover:bg-slate-50'}
+              `}
+            >
+              {item.name}
+              {item.subItems && <FaChevronDown size={10} className="hidden md:block ml-1.5 opacity-40 group-hover:rotate-180 transition-transform duration-300" />}
+            </Link>
 
-                    {item.subItems && (
-                      <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-200">
-                        <div className="py-2">
-                            {item.subItems.map((sub) => (
-                                <Link 
-                                    key={sub.path} href={sub.path}
-                                    className="block px-5 py-2.5 text-[14px] text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors"
-                                >
-                                    <FaCaretRight size={12} className="inline-block mr-2 text-blue-400 opacity-70" />
-                                    {sub.name}
-                                </Link>
-                            ))}
-                        </div>
-                      </div>
-                    )}
-                </li>
-              ))}
-              
-              <li className="flex-1 md:flex-none pl-1 md:pl-2">
-                <Link 
-                  href="/enroll" 
-                  className="flex items-center justify-center py-2 px-2 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[12px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 transition-colors uppercase whitespace-nowrap shadow-sm"
-                >
-                  報名課程
-                </Link>
-              </li>
-            </ul>
-        </nav>
+            {item.subItems && (
+              <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl shadow-blue-900/5 overflow-hidden z-[60] opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-200">
+                <div className="py-2">
+                    {item.subItems.map((sub) => (
+                        <Link 
+                            key={sub.path} href={sub.path}
+                            className="block px-5 py-2.5 text-[14px] text-slate-600 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                        >
+                            <FaCaretRight size={12} className="inline-block mr-2 text-blue-400 opacity-70" />
+                            {sub.name}
+                        </Link>
+                    ))}
+                </div>
+              </div>
+            )}
+        </li>
+      ))}
+      
+      <li className="flex-1 md:flex-none pl-1 md:pl-2">
+        <Link 
+          href="/enroll" 
+          className="flex items-center justify-center py-2 px-2 md:py-2.5 md:px-8 bg-blue-600 text-white rounded-full text-[13px] md:text-[14px] font-bold tracking-widest hover:bg-blue-700 transition-colors uppercase whitespace-nowrap shadow-sm"
+        >
+          報名課程
+        </Link>
+      </li>
+    </ul>
+</nav>
       </div>
     </header>
   )
