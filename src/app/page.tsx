@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MotionWrapper from '@/components/MotionWrapper'; 
+import { AnimatePresence, motion } from 'framer-motion';
 import { 
   FaStar, 
   FaCircleCheck, 
@@ -45,12 +46,15 @@ const serviceItems = [
 ];
 
 export default function Home() {
-  // --- 自動輪播邏輯 ---
+  // --- 🔴 核心輪播邏輯優化：參考歐洲旅遊版本 ---
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // 每次渲染時清除舊計時器
     if (timerRef.current) clearInterval(timerRef.current);
+
+    // 設定 4 秒切換一次
     timerRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % serviceItems.length);
     }, 4000); 
@@ -61,6 +65,7 @@ export default function Home() {
   }, []);
 
   const currentService = serviceItems[currentIndex];
+  // --- 🔴 邏輯結束 ---
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-600 pb-16 relative overflow-x-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
@@ -75,7 +80,7 @@ export default function Home() {
         <MotionWrapper type="fadeInUp">
           <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-20">
             
-            {/* 🟢 輪播圖片區塊：修改為 Link 包覆實現點擊跳轉 */}
+            {/* 🟢 輪播圖片區塊：導入 AnimatePresence 實現輕柔換場 */}
             <div className="md:w-1/2 relative aspect-[4/5] w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-[8px] border-white bg-white group">
                 <Link 
                   href={currentService.link} 
@@ -83,29 +88,46 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="relative block w-full h-full cursor-pointer overflow-hidden"
                 >
-                    {/* 底層文字 */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
-                       <span className="text-blue-300 font-bold tracking-widest text-lg">{currentService.title}</span>
-                    </div>
+                    {/* 使用 AnimatePresence 處理換場動畫 */}
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        key={currentIndex} // key 改變時觸發動畫
+                        initial={{ opacity: 0 }}
+                        animate={{ 
+                          opacity: 1,
+                          transition: { duration: 1.5, ease: "easeOut" } // 🟢 輕柔浮現
+                        }}
+                        exit={{ 
+                          opacity: 0,
+                          transition: { duration: 0.8, ease: "easeIn" }  // 🟢 俐落退場
+                        }}
+                        className="relative w-full h-full"
+                      >
+                        {/* 底層文字備份 */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
+                           <span className="text-blue-300 font-bold tracking-widest text-lg">{currentService.title}</span>
+                        </div>
 
-                    {/* 圖片：加入 group-hover 縮放效果 */}
-                    <Image 
-                      src={currentService.image} 
-                      alt={currentService.title} 
-                      fill 
-                      priority
-                      className="object-cover transition-all duration-1000 group-hover:scale-110" 
-                    /> 
-                    
-                    {/* 左下角標籤：增加點擊提示與變色動畫 */}
+                        {/* 圖片 */}
+                        <Image 
+                          src={currentService.image} 
+                          alt={currentService.title} 
+                          fill 
+                          priority
+                          className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                        /> 
+                        
+                        {/* 漸層遮罩 */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    {/* 左下角標籤：放在 AnimatePresence 外層確保標籤本身不隨圖片閃爍，或放在內層隨圖片換內容 */}
                     <div className="absolute bottom-6 left-6 z-10">
                       <span className="bg-white/95 text-blue-700 text-[10px] font-bold tracking-[0.2em] px-4 py-2 rounded-full uppercase border border-blue-100/50 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 flex items-center gap-2">
                         {currentService.tag} · 點擊參觀 <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
                       </span>
                     </div>
-
-                    {/* 漸層遮罩 */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                 </Link>
             </div>
 

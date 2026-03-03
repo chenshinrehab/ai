@@ -11,7 +11,6 @@ import {
   FaPalette,
   FaArrowRight
 } from 'react-icons/fa6'
-import MotionWrapper from '@/components/MotionWrapper'
 
 export default function WpVsNextPage() {
   const comparisonItems = [
@@ -68,9 +67,9 @@ export default function WpVsNextPage() {
         <article>
           
           {/* ==========================================
-              標題區塊
+              標題區塊 (靜態 div)
              ========================================== */}
-          <MotionWrapper type="fadeInUp" className="bg-white rounded-[2rem] md:rounded-[3rem] px-6 md:px-16 py-12 md:py-20 shadow-md border border-slate-100 text-center relative overflow-hidden">
+          <div className="bg-white rounded-[2rem] md:rounded-[3rem] px-6 md:px-16 py-12 md:py-20 shadow-md border border-slate-100 text-center relative overflow-hidden">
             <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
               Architecture Evolution
             </span>
@@ -97,17 +96,15 @@ export default function WpVsNextPage() {
                 className="object-cover"
               />
             </div>
-          </MotionWrapper>
+          </div>
 
           {/* ==========================================
-              核心內文區塊
+              核心內文區塊 (靜態 div)
              ========================================== */}
           <div className="mt-12 space-y-6 md:space-y-8">
             {comparisonItems.map((item, index) => (
-              <MotionWrapper 
+              <div 
                 key={index} 
-                type="fadeInUp" 
-                delay={index * 100} // 🟢 階梯式動畫觸發
                 className="bg-white p-6 md:p-10 rounded-2xl md:rounded-[2rem] border border-slate-100 shadow-sm relative overflow-hidden"
               >
                 <div className={`absolute top-0 left-0 w-1.5 md:w-2 h-full ${item.color} opacity-80`}></div>
@@ -124,7 +121,7 @@ export default function WpVsNextPage() {
                     </div>
                   </div>
                 </div>
-              </MotionWrapper>
+              </div>
             ))}
           </div>
 
@@ -140,11 +137,11 @@ export default function WpVsNextPage() {
           </div>
 
           {/* ==========================================
-              底部 CTA 區
+              底部 CTA 區 (靜態 div)
              ========================================== */}
-          <MotionWrapper type="fadeInUp" className="mt-16 text-center border-t border-slate-200 pt-16">
+          <div className="mt-16 text-center border-t border-slate-200 pt-16">
             <h3 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight mb-4">
-              準備好升級你的品牌門面了嗎？
+              準備好升級你的 brand 門面了嗎？
             </h3>
             <p className="text-slate-500 text-sm mb-10 font-medium">
               透過 AI 賦能與 Next.js 架構，打造專屬於您的頂級數位資產。
@@ -155,7 +152,7 @@ export default function WpVsNextPage() {
             >
               了解升級方案 <FaArrowRight size={14} />
             </Link>
-          </MotionWrapper>
+          </div>
 
         </article>
       </main>

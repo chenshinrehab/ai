@@ -18,25 +18,34 @@ export default function EnrollPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
-  // 💡 請將下方的 FORM_ID 替換為您的真實 Google 表單 ID
-  // 例如：1FAIpQLScXXXXXXX_XXXXXXXXXXXXXXXX
-  const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/您的_FORM_ID_請替換到這裡/formResponse"
+  // 💡 已為您更新真實的 Google 表單提交網址
+  const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/1L2kNoNHoL980bha46GTsFtA8tAy4j_Hq9reoNARVCOY/formResponse"
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    const formData = new FormData(e.currentTarget)
-
+    const formElement = e.currentTarget
+    const formData = new FormData(formElement)
+    
+    // 💡 改用 URLSearchParams 確保編碼正確，提高寫入成功率
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => {
+      params.append(key, value.toString());
+    });
+    
     try {
-      // 使用 no-cors 模式發送 POST 請求，這樣就不會跳轉到 Google 表單的完成頁面
       await fetch(GOOGLE_FORM_ACTION_URL, {
         method: 'POST',
         mode: 'no-cors',
-        body: formData
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString()
       })
-      // 成功後顯示彈出視窗
+      
       setIsSuccess(true)
+      formElement.reset() // 成功後重置表單
     } catch (error) {
       console.error('Submit Error:', error)
       alert("報名送出發生錯誤，請稍後再試。")
@@ -46,18 +55,13 @@ export default function EnrollPage() {
   }
 
   return (
-    // 🟢 科技感淺灰底色與細緻網格
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
       
-      {/* 🟢 背景裝飾 */}
       <div className="absolute top-[5%] -left-32 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute top-[40%] -right-32 w-[400px] h-[400px] bg-indigo-400/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <main className="max-w-3xl mx-auto px-6 pt-10 md:pt-16 relative z-10">
         
-        {/* ==========================================
-            標題區塊
-           ========================================== */}
         <MotionWrapper type="fadeIn" className="text-center mb-10">
           <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
             Join The Masterclass
@@ -73,13 +77,9 @@ export default function EnrollPage() {
           </p>
         </MotionWrapper>
 
-        {/* ==========================================
-            報名表單區塊
-           ========================================== */}
         <MotionWrapper type="fadeInUp">
           <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-xl shadow-blue-900/5 border border-slate-100 relative overflow-hidden">
             
-            {/* 裝飾光暈 */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
 
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -90,11 +90,10 @@ export default function EnrollPage() {
                   <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
                     <FaUser className="text-blue-500" /> 姓名 <span className="text-red-500">*</span>
                   </label>
-                  {/* 💡 請將 name="entry.1111111" 替換為您的 Google 表單真實 entry 號碼 */}
                   <input 
                     required 
                     type="text" 
-                    name="entry.1111111" 
+                    name="entry.413289709" 
                     placeholder="請輸入您的真實姓名"
                     className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
                   />
@@ -105,11 +104,10 @@ export default function EnrollPage() {
                   <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
                     <FaEnvelope className="text-blue-500" /> 聯絡信箱 <span className="text-red-500">*</span>
                   </label>
-                  {/* 💡 請替換 entry */}
                   <input 
                     required 
                     type="email" 
-                    name="entry.2222222" 
+                    name="entry.563683635" 
                     placeholder="example@gmail.com"
                     className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
                   />
@@ -122,11 +120,10 @@ export default function EnrollPage() {
                 <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
                   <FaBriefcase className="text-blue-500" /> 職業類別 <span className="text-red-500">*</span>
                 </label>
-                {/* 💡 請替換 entry */}
                 <input 
                   required 
                   type="text" 
-                  name="entry.3333333" 
+                  name="entry.1742848305" 
                   placeholder="例如：行銷人員、診所醫師、中小企業主..."
                   className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
                 />
@@ -137,10 +134,9 @@ export default function EnrollPage() {
                 <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
                   <FaLightbulb className="text-blue-500" /> 最想學的東西 / 遇到什麼困難？ <span className="text-red-500">*</span>
                 </label>
-                {/* 💡 請替換 entry */}
                 <textarea 
                   required 
-                  name="entry.4444444" 
+                  name="entry.172077763" 
                   rows={4}
                   placeholder="告訴我們您目前的痛點，或期望在課程中學到什麼技能..."
                   className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all resize-none"
@@ -152,23 +148,40 @@ export default function EnrollPage() {
                 <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
                   <FaFacebook className="text-blue-500" /> 臉書帳號名稱 / 連結 <span className="text-red-500">*</span>
                 </label>
-                {/* 💡 請替換 entry */}
                 <input 
                   required 
                   type="text" 
-                  name="entry.5555555" 
-                  placeholder="請輸入您的 FB 名稱或個人主頁網址"
+                  name="entry.282687606" 
+                  placeholder="請輸入您的 FB 名稱 or 個人主頁網址"
                   className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
                 />
-                <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-3 mt-2">
-                  <p className="text-[12px] text-indigo-700 font-medium leading-relaxed">
-                    🚀 <b>重要提醒：</b>最新課程內容跟教學都會發布在粉專上！<br />
-                    我們需要核對您是否有按讚追蹤，確認完成後才算報名成功喔！
-                  </p>
-                </div>
               </div>
 
-              {/* 提交按鈕 */}
+              {/* 6. LINE 帳號 */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
+                  <span className="text-green-500 font-black">LINE</span> LINE ID / 顯示名稱 <span className="text-red-500">*</span>
+                </label>
+                <input 
+                  required 
+                  type="text" 
+                  name="entry.2101562578" 
+                  placeholder="請輸入您的 LINE ID 或名稱"
+                  className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all"
+                />
+              </div>
+
+              <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-4 mt-4">
+                <p className="text-[13px] text-indigo-700 font-medium leading-relaxed">
+                  🚀 <b>報名最後一步：</b><br />
+                  最新課程內容與重要教學都會發布在粉專與官方 LINE！<br />
+                  請確保您已完成：<br />
+                  <span className="inline-block mt-1">✅ <b>按讚追蹤臉書粉專</b></span><br />
+                  <span className="inline-block">✅ <b>加入官方 LINE 帳號</b></span><br />
+                  <span className="block mt-2 text-red-600 font-bold underline">※ 經工作人員核對確認後，才算報名成功喔！</span>
+                </p>
+              </div>
+
               <div className="pt-6 border-t border-slate-100">
                 <button 
                   type="submit" 
@@ -191,13 +204,9 @@ export default function EnrollPage() {
 
       </main>
 
-      {/* ==========================================
-          報名成功彈出視窗 (Modal)
-         ========================================== */}
       {isSuccess && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="bg-white rounded-[2rem] w-full max-w-md p-8 md:p-10 text-center shadow-2xl relative animate-in zoom-in-95 duration-300">
-            {/* 關閉按鈕 */}
             <button 
               onClick={() => setIsSuccess(false)}
               className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors"

@@ -4,7 +4,6 @@ import React from 'react'
 import Link from 'next/link'
 import { useParams, notFound } from 'next/navigation'
 import { FaRocket, FaCode, FaArrowRight } from 'react-icons/fa6'
-import MotionWrapper from '@/components/MotionWrapper'
 import Script from 'next/script'
 
 // 💡 資料庫模擬 (請替換回實際資料來源)
@@ -26,8 +25,7 @@ export default function FeatureDetailPage() {
       { id: 'f5', name: '動態生成網頁對應的QR code', description: '讓客戶現場想要更深入閱讀該頁面，讓馬上進入客戶手機內，只有電腦板顯示，手機版本隱藏', videoId: 'GssQiig1T6M' },
       { id: 'f6', name: '網頁間串接', description: '輕鬆設定代碼，發布文章後，自動在對應的網頁也會跑出相關卡片連結', videoId: '2izJlPjRb7Y' },
       { id: 'f7', name: '頁面分享功能', description: '客戶覺得該頁面很棒，可以直接串聯臉書或是line直接分享', videoId: '04fhqd7jw6o' },
-      { id: 'f8', name: '串接google 表單功能', description: '不需要額外跳轉到其他連接，網頁內填寫完直接送出', videoId: '您的YouTube影片ID_2' },
-      { id: 'f9', name: '背景音樂功能', description: '調整手機音量就可以聽到背景輕柔的音樂囉!', videoId: 'xNoCOXQGAFA' }
+      { id: 'f8', name: '串接google 表單功能', description: '不需要額外跳轉到其他連接，網頁內填寫完直接送出', videoId: '您的YouTube影片ID_2' }
     ]
   };
 
@@ -70,7 +68,7 @@ export default function FeatureDetailPage() {
       <main className="max-w-6xl mx-auto px-6 py-12 md:py-16 relative z-10">
         
         {/* --- 頁面標頭 --- */}
-        <MotionWrapper type="fadeIn" className="text-center mb-16 space-y-3">
+        <div className="text-center mb-16 space-y-3">
           <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
             {category.subtitle}
           </span>
@@ -81,15 +79,15 @@ export default function FeatureDetailPage() {
           <p className="text-slate-500 text-sm md:text-base max-w-2xl mx-auto mt-6 font-medium tracking-wide">
             {category.description}
           </p>
-        </MotionWrapper>
+        </div>
 
         {/* --- 功能展示內容區塊 --- */}
         <div className="space-y-16 md:space-y-24">
           {features.map((feature: any, idx: number) => (
-            <MotionWrapper key={feature.id || idx} type="fadeIn">
+            <div key={feature.id || idx}>
               <div className={`bg-white rounded-[2rem] border border-slate-100 shadow-lg shadow-blue-900/5 overflow-hidden flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
                 
-                {/* 影片區塊 - 移除 overflow-hidden 以防切到內容，並調整 UI 層級 */}
+                {/* 影片區塊 */}
                 <div className="w-full lg:w-1/2 relative aspect-video bg-slate-900 border-b lg:border-b-0 lg:border-r border-slate-100">
                   {feature.videoId ? (
                     <iframe 
@@ -105,17 +103,16 @@ export default function FeatureDetailPage() {
                       <p className="text-sm tracking-widest font-bold">VIDEO COMING SOON</p>
                     </div>
                   )}
-                  {/* 模擬瀏覽器頂部 UI - 調整樣式避免遮擋影片頂部 */}
+                  {/* 模擬瀏覽器頂部 UI */}
                   <div className="absolute top-0 left-0 w-full h-6 bg-black/10 backdrop-blur-sm flex items-center px-4 gap-1.5 z-20 pointer-events-none">
-                  <div className="w-2 h-2 rounded-full bg-[#ff5f56]"></div>
-  <div className="w-2 h-2 rounded-full bg-[#ffbd2e]"></div>
-  <div className="w-2 h-2 rounded-full bg-[#27c93f]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#ff5f56]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#ffbd2e]"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#27c93f]"></div>
                   </div>
                 </div>
 
                 {/* 文字說明區塊 */}
                 <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                  {/* 手機版隱藏火箭圖案 (hidden md:flex) */}
                   <div className="hidden md:flex w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 items-center justify-center mb-6">
                     <FaRocket size={24} />
                   </div>
@@ -129,26 +126,24 @@ export default function FeatureDetailPage() {
                   </p>
                   
                   <div className="mt-auto">
-                    {/* 手機版隱藏 Feature 標籤 (hidden md:inline-block) */}
                     <span className="hidden md:inline-block px-4 py-1.5 bg-slate-100 text-slate-600 text-[10px] font-bold tracking-widest rounded-md uppercase">
                       # ADVANCED FEATURE
                     </span>
                   </div>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
           ))}
         </div>
 
         {/* --- 底部展示方塊 --- */}
-        <MotionWrapper type="fadeIn" className="mt-16 md:mt-24">
+        <div className="mt-16 md:mt-24">
           <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-blue-900/5 p-8 md:p-16 text-center relative overflow-hidden group">
             
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-40"></div>
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-teal-50 rounded-full blur-3xl -ml-16 -mb-16 opacity-40"></div>
 
             <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
-              {/* 此處火箭為裝飾性，若也要隱藏可加上 hidden md:flex */}
               <div className="hidden md:flex w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 items-center justify-center mb-8">
                 <FaRocket size={26} />
               </div>
@@ -164,54 +159,46 @@ export default function FeatureDetailPage() {
               </p>
               
               <div className="flex flex-col md:flex-row flex-wrap gap-5 w-full justify-center items-center">
-  {/* 1. 醫師網頁：極光紫漸層 */}
-  <a 
-    href="https://www.dryichen.com.tw/" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[220px] py-3.5 bg-gradient-to-br from-slate-900 to-indigo-900 text-white rounded-xl font-bold text-sm hover:from-indigo-600 hover:to-purple-600 transition-all duration-500 shadow-[0_4px_15px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_25px_rgba(79,70,229,0.5)] flex items-center justify-center gap-3 group/btn whitespace-nowrap border border-white/10"
-  >
-    醫師個人網頁實測 <FaArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-  </a>
-  
-  {/* 2. 歐洲旅遊：深海翡翠漸層 */}
-  <a 
-    href="https://europe-navy.vercel.app/europe/italy" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[220px] py-3.5 bg-gradient-to-br from-teal-900 to-emerald-800 text-white rounded-xl font-bold text-sm hover:from-teal-500 hover:to-emerald-400 transition-all duration-500 shadow-[0_4px_15px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_25px_rgba(16,185,129,0.5)] flex items-center justify-center gap-3 group/btn whitespace-nowrap border border-white/10"
-  >
-    歐洲包車旅遊導覽 <FaArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-  </a>
+                <a 
+                  href="https://www.dryichen.com.tw/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[220px] py-3.5 bg-gradient-to-br from-slate-900 to-indigo-900 text-white rounded-xl font-bold text-sm hover:from-indigo-600 hover:to-purple-600 transition-all duration-500 shadow-[0_4px_15px_rgba(79,70,229,0.3)] hover:shadow-[0_8px_25px_rgba(79,70,229,0.5)] flex items-center justify-center gap-3 group/btn whitespace-nowrap border border-white/10"
+                >
+                  醫師個人網頁實測 <FaArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                </a>
+                
+                <a 
+                  href="https://europe-navy.vercel.app/europe/italy" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[220px] py-3.5 bg-gradient-to-br from-teal-900 to-emerald-800 text-white rounded-xl font-bold text-sm hover:from-teal-500 hover:to-emerald-400 transition-all duration-500 shadow-[0_4px_15px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_25px_rgba(16,185,129,0.5)] flex items-center justify-center gap-3 group/btn whitespace-nowrap border border-white/10"
+                >
+                  歐洲包車旅遊導覽 <FaArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                </a>
 
-  {/* 3. 網頁製作：烈焰熔岩漸層 */}
-  <a 
-    href="https://ai-zeta-dusky-55.vercel.app/" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[220px] py-3.5 bg-gradient-to-br from-orange-900 to-red-800 text-white rounded-xl font-bold text-sm hover:from-orange-500 hover:to-pink-500 transition-all duration-500 shadow-[0_4px_15px_rgba(249,115,22,0.3)] hover:shadow-[0_8px_25px_rgba(249,115,22,0.5)] flex items-center justify-center gap-3 group/btn whitespace-nowrap border border-white/10"
-  >
-    網頁製作與行銷 <FaArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
-  </a>
+                <a 
+                  href="https://ai-zeta-dusky-55.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[220px] py-3.5 bg-gradient-to-br from-orange-900 to-red-800 text-white rounded-xl font-bold text-sm hover:from-orange-500 hover:to-pink-500 transition-all duration-500 shadow-[0_4px_15px_rgba(249,115,22,0.3)] hover:shadow-[0_8px_25px_rgba(249,115,22,0.5)] flex items-center justify-center gap-3 group/btn whitespace-nowrap border border-white/10"
+                >
+                  網頁製作與行銷 <FaArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                </a>
 
-  {/* 4. 🚀 專屬功能：霓虹白金設計 (寬度略寬以示區別) */}
-  <Link 
-    href="/booking" 
-    className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[260px] py-3.5 bg-white text-blue-600 rounded-xl text-[14px] font-black tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.8)] flex items-center justify-center gap-3 group whitespace-nowrap border-2 border-blue-600 hover:border-transparent relative overflow-hidden active:scale-95"
-  >
-    <span className="relative z-10 flex items-center gap-3">
-      打造你的專屬功能 <FaRocket size={14} className="group-hover:animate-bounce" />
-    </span>
-  </Link>
-</div>
-
-
+                <Link 
+                  href="/booking" 
+                  className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[260px] py-3.5 bg-white text-blue-600 rounded-xl text-[14px] font-black tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.8)] flex items-center justify-center gap-3 group whitespace-nowrap border-2 border-blue-600 hover:border-transparent relative overflow-hidden active:scale-95"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    打造你的專屬功能 <FaRocket size={14} className="group-hover:animate-bounce" />
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
-        </MotionWrapper>
+        </div>
       </main>
     </div>
   )
 }
-
-

@@ -12,7 +12,6 @@ import {
   FaPaintbrush,
   FaTerminal
 } from 'react-icons/fa6'
-import MotionWrapper from '@/components/MotionWrapper'
 
 export default function CourseSyllabusPage() {
   return (
@@ -27,12 +26,9 @@ export default function CourseSyllabusPage() {
         <article className="relative z-10">
           
           {/* ==========================================
-              標題區塊：技術宣言（使用快速淡入）
+              標題區塊：技術宣言
              ========================================== */}
-          <MotionWrapper 
-            type="fadeIn" 
-            className="bg-white rounded-[2.5rem] px-0 md:px-16 py-10 md:py-16 shadow-xl shadow-blue-900/5 border border-slate-100 text-center relative overflow-hidden"
-          >
+          <div className="bg-white rounded-[2.5rem] px-0 md:px-16 py-10 md:py-16 shadow-xl shadow-blue-900/5 border border-slate-100 text-center relative overflow-hidden">
             <div className="px-6 md:px-0">
               <span className="text-indigo-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
                 Step-by-Step Masterclass
@@ -50,7 +46,7 @@ export default function CourseSyllabusPage() {
                 我們將循序漸進，從贈送頂級架構到終端機實作，教你如何用 AI 當大腦，打造出極速、高轉換且具備完美 SEO 體質的現代化網站。
               </p>
             </div>
-          </MotionWrapper>
+          </div>
 
           {/* ==========================================
               核心內文區塊：課程大綱規劃
@@ -58,7 +54,7 @@ export default function CourseSyllabusPage() {
           <div className="mt-12 space-y-8">
             
             {/* 階段 1：基礎架構與本地運行 */}
-            <MotionWrapper type="fadeInUp" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
               <div className="absolute top-0 left-0 w-2 h-full bg-rose-500 group-hover:bg-rose-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-rose-50 flex items-center justify-center shrink-0 text-rose-600 mb-2 md:mb-0">
@@ -74,10 +70,10 @@ export default function CourseSyllabusPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
             {/* 階段 2：AI 詠唱與溝通 */}
-            <MotionWrapper type="fadeInUp" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
               <div className="absolute top-0 left-0 w-2 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 mb-2 md:mb-0">
@@ -93,10 +89,10 @@ export default function CourseSyllabusPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
             {/* 階段 3：視覺美化 */}
-            <MotionWrapper type="fadeInUp" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
               <div className="absolute top-0 left-0 w-2 h-full bg-purple-500 group-hover:bg-purple-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-50 flex items-center justify-center shrink-0 text-purple-600 mb-2 md:mb-0">
@@ -112,10 +108,10 @@ export default function CourseSyllabusPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
             {/* 階段 4：功能擴充 */}
-            <MotionWrapper type="fadeInUp" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
               <div className="absolute top-0 left-0 w-2 h-full bg-indigo-500 group-hover:bg-indigo-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-indigo-50 flex items-center justify-center shrink-0 text-indigo-600 mb-2 md:mb-0">
@@ -131,10 +127,10 @@ export default function CourseSyllabusPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
             {/* 階段 5：SEO 與上線 */}
-            <MotionWrapper type="fadeInUp" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
               <div className="absolute top-0 left-0 w-2 h-full bg-teal-500 group-hover:bg-teal-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-50 flex items-center justify-center shrink-0 text-teal-600 mb-2 md:mb-0">
@@ -150,12 +146,12 @@ export default function CourseSyllabusPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
           </div>
 
           {/* ==========================================
-              特色標籤群（使用輕量淡入）
+              特色標籤群
              ========================================== */}
           <div className="flex flex-wrap justify-center gap-3 pt-12">
             {[
@@ -166,18 +162,18 @@ export default function CourseSyllabusPage() {
               '動態功能擴充',
               'SEO 排名優化'
             ].map((f: string, i: number) => (
-              <MotionWrapper key={i} type="fadeIn" delay={i * 0.05}>
+              <div key={i}>
                 <span className="text-[11px] md:text-xs font-bold tracking-widest text-indigo-600 border border-indigo-100 px-5 py-2 rounded-full bg-indigo-50/50 shadow-sm hover:bg-indigo-100 transition-colors cursor-default inline-block">
                   # {f}
                 </span>
-              </MotionWrapper>
+              </div>
             ))}
           </div>
 
           {/* ==========================================
               底部 CTA 諮詢區
              ========================================== */}
-          <MotionWrapper type="fadeInUp" className="mt-16 text-center border-t border-slate-200 pt-12">
+          <div className="mt-16 text-center border-t border-slate-200 pt-12">
             <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-4">
               準備好打造你的專屬網站了嗎？
             </h3>
@@ -190,7 +186,7 @@ export default function CourseSyllabusPage() {
             >
               立刻報名課程 <FaArrowRight size={16} />
             </Link>
-          </MotionWrapper>
+          </div>
 
         </article>
       </main>

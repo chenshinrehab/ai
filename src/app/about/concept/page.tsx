@@ -8,14 +8,13 @@ import {
   FaShieldHalved, 
   FaRocket 
 } from 'react-icons/fa6'
-import MotionWrapper from '@/components/MotionWrapper'
 
 export default function ConceptPage() {
   return (
     // 🟢 科技感淺灰底色與細緻網格
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
       
-      {/* 🟢 背景裝飾：改為低負荷靜態渲染 */}
+      {/* 🟢 背景裝飾：低負荷靜態渲染 */}
       <div className="absolute top-[5%] -left-32 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute top-[40%] -right-32 w-[400px] h-[400px] bg-teal-400/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -23,9 +22,9 @@ export default function ConceptPage() {
         <article className="relative z-10">
           
           {/* ==========================================
-              標題區塊：我的理念 (改為快速淡入)
+              標題區塊：我的理念 (改為靜態 div)
              ========================================== */}
-          <MotionWrapper type="fadeIn" className="bg-white rounded-[2.5rem] p-10 md:p-16 shadow-xl shadow-blue-900/5 border border-slate-100 text-center relative overflow-hidden">
+          <div className="bg-white rounded-[2.5rem] p-10 md:p-16 shadow-xl shadow-blue-900/5 border border-slate-100 text-center relative overflow-hidden">
             <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
               Our Vision & Origin
             </span>
@@ -39,15 +38,15 @@ export default function ConceptPage() {
             <p className="text-slate-500 !text-xl md:!text-2xl font-medium !max-w-none md:!max-w-5xl mx-auto !tracking-tighter md:!tracking-tight !leading-snug md:!leading-normal !px-0 md:!px-8 text-center block w-full">
               我不懂程式碼，但我學會了與 AI 協作。這不是傳統的程式課程，而是一場幫助你掌握數位資產、拒絕被行銷公司綁架的技術賦能計畫。
             </p>
-          </MotionWrapper>
+          </div>
 
           {/* ==========================================
-              核心內文區塊：三大理念 (統一使用 fadeIn)
+              核心內文區塊：三大理念 (改為靜態 div)
              ========================================== */}
           <div className="mt-12 space-y-8">
             
             {/* 理念 1：從零到一與低成本 */}
-            <MotionWrapper type="fadeIn" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all duration-300">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all duration-300">
               <div className="absolute top-0 left-0 w-2 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 mb-2 md:mb-0">
@@ -64,10 +63,10 @@ export default function ConceptPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
             {/* 理念 2：拒絕行銷綁架 */}
-            <MotionWrapper type="fadeIn" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all duration-300">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all duration-300">
               <div className="absolute top-0 left-0 w-2 h-full bg-indigo-500 group-hover:bg-indigo-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-indigo-50 flex items-center justify-center shrink-0 text-indigo-600 mb-2 md:mb-0">
@@ -84,10 +83,10 @@ export default function ConceptPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
             {/* 理念 3：Next.js vs WordPress */}
-            <MotionWrapper type="fadeIn" className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all duration-300">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all duration-300">
               <div className="absolute top-0 left-0 w-2 h-full bg-teal-500 group-hover:bg-teal-600 transition-colors"></div>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-50 flex items-center justify-center shrink-0 text-teal-600 mb-2 md:mb-0">
@@ -104,7 +103,7 @@ export default function ConceptPage() {
                   </p>
                 </div>
               </div>
-            </MotionWrapper>
+            </div>
 
           </div>
 
@@ -126,9 +125,9 @@ export default function ConceptPage() {
           </div>
 
           {/* ==========================================
-              底部 CTA 諮詢區 (優化點擊反饋)
+              底部 CTA 諮詢區
              ========================================== */}
-          <MotionWrapper type="fadeIn" className="mt-16 text-center border-t border-slate-200 pt-12">
+          <div className="mt-16 text-center border-t border-slate-200 pt-12">
             <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-4">
               準備好掌握你的數位資產了嗎？
             </h3>
@@ -141,7 +140,7 @@ export default function ConceptPage() {
             >
               <FaCalendarCheck size={16} /> 開始架站計畫
             </Link>
-          </MotionWrapper>
+          </div>
 
         </article>
       </main>
