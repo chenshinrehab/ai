@@ -117,32 +117,44 @@ export default function PortfolioPage() {
 
             {/* 下半部：網頁成果展示 */}
             <div className="bg-slate-50 border-t border-slate-100 p-8 md:p-10">
-              <div className="flex items-center gap-3 mb-6">
-                <FaRobot className="text-blue-500" size={20} />
-                <h3 className="text-lg font-bold text-slate-800">網頁實際成果展示</h3>
-              </div>
+  <div className="flex items-center gap-3 mb-6">
+    <FaRobot className="text-blue-500" size={20} />
+    <h3 className="text-lg font-bold text-slate-800">網頁實際成果展示(上架兩個月)</h3>
+  </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {[
-                  { src: "/images/about/6.webp", text: "AI推薦病患來診所" },
-                  { src: "/images/about/4.webp", text: "PRP在區域推薦第一名" },
-                  { src: "/images/about/5.webp", text: "震波在區域推薦第一名" }
-                ].map((img, idx) => (
-                  <div key={idx} className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white">
-                    <Image 
-                      src={img.src} 
-                      alt={img.text}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-contain"
-                    />
-                    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 to-transparent p-4 z-10">
-                      <p className="text-white text-xs font-bold tracking-wide">{img.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
+  <div className="flex overflow-x-auto gap-5 pb-6 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent snap-x">
+    {[
+      { src: "/images/about/new.webp", text: "AI推薦病患來診所" },
+      { src: "/images/about/prp.webp", text: "PRP被收錄且圖片排在第三" },
+      { src: "/images/about/prpa.webp", text: "PRP在區域AI推薦第一" },
+      { src: "/images/about/eswt.webp", text: "PRP被收錄且圖片排在第二" },
+      { src: "/images/about/eswta.webp", text: "震波在區域推薦第一" },
+      { src: "/images/about/moun.webp", text: "猛健樂搜尋新竹排第一" },
+      { src: "/images/about/mouna.webp", text: "猛健樂在區域推薦第一" },
+      { src: "/images/about/bone.webp", text: "照骨齡搜尋新竹診所第一" },
+      { src: "/images/about/bonea.webp", text: "照骨齡在區域推薦第一" }
+
+    ].map((img, idx) => (
+
+      <div 
+        key={idx} 
+        className="flex-shrink-0 snap-center w-[280px] md:w-[350px] group relative aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-white"
+      >
+        <Image 
+          src={img.src} 
+          alt={img.text}
+          fill
+          sizes="(max-width: 768px) 280px, 350px"
+          className="object-contain hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent p-4 z-10">
+          <p className="text-white text-xs font-bold tracking-wide">{img.text}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
           </div>
 
           {/* ==========================================

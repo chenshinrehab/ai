@@ -25,7 +25,7 @@ export default function FeatureDetailPage() {
       { id: 'f5', name: '動態生成網頁對應的QR code', description: '讓客戶現場想要更深入閱讀該頁面，讓馬上進入客戶手機內，只有電腦板顯示，手機版本隱藏', videoId: 'GssQiig1T6M' },
       { id: 'f6', name: '網頁間串接', description: '輕鬆設定代碼，發布文章後，自動在對應的網頁也會跑出相關卡片連結', videoId: '2izJlPjRb7Y' },
       { id: 'f7', name: '頁面分享功能', description: '客戶覺得該頁面很棒，可以直接串聯臉書或是line直接分享', videoId: '04fhqd7jw6o' },
-      { id: 'f8', name: '串接google 表單功能', description: '不需要額外跳轉到其他連接，網頁內填寫完直接送出', videoId: '您的YouTube影片ID_2' }
+      { id: 'f8', name: '串接google 表單功能', description: '不需要額外跳轉到其他連接，網頁內填寫完直接送出', videoId: 'kqm0wgF_jV4' }
     ]
   };
 

@@ -282,14 +282,6 @@ export default function Home() {
 
       </main>
 
-      <MotionWrapper type="scale" className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50">
-        <a 
-          href="https://line.me/R/ti/p/@yourid" 
-          className="bg-blue-600 text-white w-14 h-14 md:w-16 md:h-16 rounded-full shadow-xl hover:scale-110 active:scale-90 transition-transform flex items-center justify-center border-2 border-white"
-        >
-          <FaCommentDots className="text-[24px] md:text-[28px]" />
-        </a>
-      </MotionWrapper>
     </div>
   );
 }
