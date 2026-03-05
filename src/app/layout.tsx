@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '智網Ai引擎 | AI 時代的流量革命',
     description: '從零到一，透過 Next.js 與 AI 技術加速排名登頂，奪回數位時代的流量掌控權。',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
   // --- 設定結束 ---
   robots: {

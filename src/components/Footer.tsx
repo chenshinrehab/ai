@@ -148,19 +148,23 @@ export default function Footer() {
 
             {/* Email 資訊 */}
             <div className="flex flex-col items-start lg:items-end gap-1 mt-4">
-              <span className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800">
-                合作與諮詢
-              </span>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="h-[2px] w-6 bg-blue-500/30 hidden lg:block rounded-full"></span>
-                <a 
-                  href="jimmyforjob2@gmail.com" 
-                  className="text-[12px] text-blue-600 font-bold tracking-wider bg-blue-50 px-2.5 py-1 rounded-md hover:bg-blue-100 transition-all"
-                >
-                  jimmyforjob2@gmail.com
-                </a>
-              </div>
-            </div>
+  <a 
+    href="mailto:jimmyforjob2@gmail.com" 
+    className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800 hover:text-blue-600 transition-colors cursor-pointer"
+  >
+    合作與諮詢
+  </a>
+  
+  <div className="flex items-center gap-2 mt-1">
+    <span className="h-[2px] w-6 bg-blue-500/30 hidden lg:block rounded-full"></span>
+    <a 
+      href="mailto:jimmyforjob2@gmail.com" 
+      className="text-[12px] text-blue-600 font-bold tracking-wider bg-blue-50 px-2.5 py-1 rounded-md hover:bg-blue-100 transition-all"
+    >
+      jimmyforjob2@gmail.com
+    </a>
+  </div>
+</div>
 
             <p className="text-[11px] text-slate-400 tracking-wide font-medium pt-2">
               Zero to One. AI-Powered Web Development. <br className="md:hidden" />

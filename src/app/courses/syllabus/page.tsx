@@ -5,11 +5,8 @@ import Link from 'next/link'
 import { 
   FaRocket, 
   FaChartLine, 
-  FaShieldHalved, 
   FaCubes, 
   FaArrowRight,
-  FaRobot,
-  FaPaintbrush,
   FaTerminal
 } from 'react-icons/fa6'
 
@@ -18,30 +15,31 @@ export default function CourseSyllabusPage() {
     // 🟢 科技感淺灰底色與細緻網格
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
       
-      {/* 🟢 背景裝飾：優化為 pointer-events-none 並簡化渲染壓力 */}
+      {/* 🟢 背景裝飾 */}
       <div className="absolute top-[5%] -left-32 w-[500px] h-[500px] bg-indigo-400/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute top-[40%] -right-32 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-[10%] left-[20%] w-[300px] h-[300px] bg-teal-400/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <main className="max-w-4xl mx-auto px-6 pt-10 md:pt-16 relative">
         <article className="relative z-10">
           
           {/* ==========================================
-              標題區塊：技術宣言
-             ========================================== */}
-          <div className="bg-white rounded-[2.5rem] px-0 md:px-16 py-10 md:py-16 shadow-xl shadow-blue-900/5 border border-slate-100 text-center relative overflow-hidden">
-            <div className="px-6 md:px-0">
+              標題區塊：技術宣言 (H1)
+              ========================================== */}
+          <div className="bg-white rounded-[2.5rem] px-6 md:px-16 py-10 md:py-16 shadow-xl shadow-blue-900/5 border border-slate-100 text-center relative overflow-hidden">
+            <div className="px-2 md:px-0">
               <span className="text-indigo-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
                 Step-by-Step Masterclass
               </span>
               <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
                 從零到一的架站實戰，<br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-teal-500">
                   掌握 AI 時代的開發超能力
                 </span>
               </h1>
               <div className="w-16 h-[4px] bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full mx-auto mb-8"></div>
               
-              <p className="text-slate-500 text-[17px] md:text-xl font-medium max-w-none md:max-w-5xl mx-auto tracking-normal leading-relaxed mb-10 text-justify md:text-center">
+              <p className="text-slate-500 text-[16px] md:text-xl font-medium max-w-none md:max-w-3xl mx-auto tracking-normal leading-relaxed text-justify md:text-center">
                 這不是一堂充滿艱澀理論的傳統程式課。<br className="hidden md:block" />
                 我們將循序漸進，從贈送頂級架構到終端機實作，教你如何用 AI 當大腦，打造出極速、高轉換且具備完美 SEO 體質的現代化網站。
               </p>
@@ -49,142 +47,201 @@ export default function CourseSyllabusPage() {
           </div>
 
           {/* ==========================================
-              核心內文區塊：課程大綱規劃
-             ========================================== */}
-          <div className="mt-12 space-y-8">
+              核心內文區塊：三大階段課程大綱
+              ========================================== */}
+          <div className="mt-12 space-y-10">
             
-            {/* 階段 1：基礎架構與本地運行 */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            {/* --- 階段 1：基礎架構與本地運行 (H2) --- */}
+            <section className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all hover:shadow-md">
               <div className="absolute top-0 left-0 w-2 h-full bg-rose-500 group-hover:bg-rose-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-rose-50 flex items-center justify-center shrink-0 text-rose-600 mb-2 md:mb-0">
-                  <FaTerminal size={20} className="md:size-[22px]" />
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-8">
+                <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center shrink-0 text-rose-600">
+                  <FaTerminal size={22} />
                 </div>
-                <div className="w-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 tracking-tight text-center md:text-left">
-                    第一堂：獲取百萬級架構，終端機實戰啟航
-                  </h3>
-                  <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
-                    萬事起頭難？不用擔心，第一堂課我們直接<b>贈送價值數萬元的 Next.js 現代化基礎架構</b>。<br /><br />
-                    我們將帶著你打開電腦的終端機 (Terminal)，輸入第一行指令，教你如何安裝環境配置，讓這個專業級別的網頁直接在你的電腦裡真實跑起來，享受從無到有的巨大成就感！
+                <div className="w-full text-center md:text-left">
+                  <h2 className="text-2xl font-bold text-slate-800 mb-2 tracking-tight">
+                    第一階段：網站建置與基礎架構
+                  </h2>
+                  <p className="text-rose-600/80 font-bold text-sm tracking-wide">
+                    從 0 到 1 的突破，打好完美地基
+                  </p>
+                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed">
+                    讓完全沒有基礎的學生能跑起高質量的網站，並讓已有網站的學生找到優化方向。
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* 階段 2：AI 詠唱與溝通 */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+              {/* 課程列表 (H3) */}
+              <div className="space-y-0 pl-2 md:pl-4">
+                {[
+                  { 
+                    title: "免費獲得價值數萬的底層架構，並學會檢測現有網站", 
+                    desc: "我們已經幫你把最困難的「底層架構」寫好了（價值約 4 萬元）！只要跟著步驟複製貼上幾個指令，不懂程式也能在自己的電腦上跑出專業網站。如果你已經有網站，我們會教你用專屬的「網站健檢工具」一鍵找出缺點，讓你知道怎麼要求原本的網頁廠商修改。" 
+                  },
+                  { 
+                    title: "讓 AI 當你的專屬工程師，輕鬆客製化版面", 
+                    desc: "不滿意網站的顏色或排版？不用自己苦學寫程式！我們會教你如何正確地「對 AI 下指令」(Prompt)，讓 AI 乖乖聽話，幫你把網頁的頁首、選單和排版改成你心中理想的樣子。" 
+                  },
+                  { 
+                    title: "一次搞定幾百個網頁的超強效率（資料庫思維）", 
+                    desc: "傳統做網頁是一頁一頁慢慢刻，非常浪費時間。這堂課會教你「套版」的聰明概念，只要在資料庫輸入你的文章或商品資料，網站就會瞬間自動生成上百個格式統一、排版漂亮的獨立網頁。" 
+                  },
+                  { 
+                    title: "讓網站變美又變快的秘訣（視覺與圖片優化）", 
+                    desc: "放太多圖片會讓網站變慢、趕走客人。我們會教你如何讓系統自動幫圖片「減肥」，在保持畫質清晰的同時，讓網頁開啟速度快如閃電！我們還會加入一些滑順的進場動畫，讓你的網站看起來更有質感。" 
+                  },
+                  { 
+                    title: "正式讓全世界看見你的網站（託管部署與網域）", 
+                    desc: "做好的網站怎麼放到網路上？不用花大錢租主機！我們會教你使用免費又強大的雲端平台（Vercel），並買下專屬於你的「專屬網址」（例如：yourname.com），讓你的心血正式上線供全世界瀏覽。" 
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 items-start relative pb-8 last:pb-0">
+                    <div className="w-7 h-7 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 text-xs font-black z-10 shadow-sm border border-rose-200">
+                      {idx + 1}
+                    </div>
+                    {idx !== 4 && <div className="absolute left-[13px] top-7 bottom-0 w-[2px] bg-rose-50 -z-0"></div>}
+                    <div className="pt-0.5">
+                      <h3 className="text-[16px] font-bold text-slate-800 mb-1">{item.title}</h3>
+                      <p className="text-[14px] text-slate-600 leading-relaxed text-justify">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* --- 階段 2：互動功能與體驗強化 (H2) --- */}
+            <section className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all hover:shadow-md">
               <div className="absolute top-0 left-0 w-2 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 mb-2 md:mb-0">
-                  <FaRobot size={20} className="md:size-[22px]" />
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-8">
+                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
+                  <FaCubes size={22} />
                 </div>
-                <div className="w-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 tracking-tight text-center md:text-left">
-                    第二堂：AI 詠唱術，讓 AI 成為你的專屬工程師
-                  </h3>
-                  <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
-                    有了基礎架構，接下來你不需要死背程式碼。我們將進入 AI 協作的核心階段。<br /><br />
-                    課程會詳細介紹如何給予精準的 Prompt (提示詞)，教你如何與 AI 有效溝通，讓它幫你除錯、解釋邏輯，甚至直接幫你寫出複雜的模組代碼，讓你深刻體會「懂邏輯比懂語法更重要」。
+                <div className="w-full text-center md:text-left">
+                  <h2 className="text-2xl font-bold text-slate-800 mb-2 tracking-tight">
+                    第二階段：互動功能與體驗強化
+                  </h2>
+                  <p className="text-blue-600/80 font-bold text-sm tracking-wide">
+                    樂高式開發，打造高轉換率網站
+                  </p>
+                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed">
+                    提供各式實用的外掛與程式碼模組，讓網站不只是「好看」，還要「好用」且具備商業功能。
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* 階段 3：視覺美化 */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
-              <div className="absolute top-0 left-0 w-2 h-full bg-purple-500 group-hover:bg-purple-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-50 flex items-center justify-center shrink-0 text-purple-600 mb-2 md:mb-0">
-                  <FaPaintbrush size={20} className="md:size-[22px]" />
-                </div>
-                <div className="w-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 tracking-tight text-center md:text-left">
-                    第三堂：視覺魔法，Tailwind CSS 網頁美化
-                  </h3>
-                  <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
-                    有了骨架，現在我們來為網站穿上漂亮的衣服。<br /><br />
-                    我們將教學如何修改顏色、排版、間距與動畫特效。透過現代化的樣式框架，帶你將生硬的程式碼轉化為具備高質感的 UI/UX 設計，讓網頁不僅能動，還能第一眼就吸引客戶的目光。
-                  </p>
-                </div>
+              {/* 課程列表 (H3) */}
+              <div className="space-y-0 pl-2 md:pl-4">
+                {[
+                  { 
+                    title: "動態展示與影音整合，打造吸睛畫面", 
+                    desc: "教你輕鬆在網站加上會跑動的「最新公告」、會自動輪播的廣告圖片。如果想放宣傳影片，也會教你怎麼放入 YouTube 影片或背景動態影片，而且保證不會拖慢網頁速度。" 
+                  },
+                  { 
+                    title: "讓客人幫你主動分享的行銷小工具", 
+                    desc: "加上「一鍵分享」按鈕，讓看完覺得讚的訪客幫你轉發。我們還會在網站角落加上專屬的聯絡按鈕（LINE 或 Messenger 等），讓潛在客戶想找你時，隨時都能點擊對話！" 
+                  },
+                  { 
+                    title: "名單收集與輕量級電商實作，網站就是你的24小時業務", 
+                    desc: "教你把網站和 Google 表單連動，自動幫你收集想報名或預約的客戶名單。如果你有賣東西，我們也會教你加上簡單的「購物車」和「第三方支付按鈕」，直接在網站上做生意。" 
+                  },
+                  { 
+                    title: "導入 AI 靈魂，在網站放一個免費的專屬客服機器人", 
+                    desc: "利用目前最紅的大型語言模型（如 ChatGPT）放到你的網站裡！我們會教你安全地串接這些 AI 功能，讓你的網站擁有一個 24 小時不休息的專屬客服，隨時自動回答客人的常見問題。" 
+                  },
+                  { 
+                    title: "破解網頁外包與 SEO 廠商的秘密", 
+                    desc: "每個月付給廠商好幾千塊的「網站維護費」，他們到底做了什麼？這堂課會帶你揭開業界秘密，並教你如何自己優化「Google 商家檔案」，讓你的店面或服務在 Google 地圖上更容易被顧客搜到！" 
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 items-start relative pb-8 last:pb-0">
+                    <div className="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 text-xs font-black z-10 shadow-sm border border-blue-200">
+                      {idx + 1}
+                    </div>
+                    {idx !== 4 && <div className="absolute left-[13px] top-7 bottom-0 w-[2px] bg-blue-50 -z-0"></div>}
+                    <div className="pt-0.5">
+                      <h3 className="text-[16px] font-bold text-slate-800 mb-1">{item.title}</h3>
+                      <p className="text-[14px] text-slate-600 leading-relaxed text-justify">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+            </section>
 
-            {/* 階段 4：功能擴充 */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
-              <div className="absolute top-0 left-0 w-2 h-full bg-indigo-500 group-hover:bg-indigo-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-indigo-50 flex items-center justify-center shrink-0 text-indigo-600 mb-2 md:mb-0">
-                  <FaCubes size={20} className="md:size-[22px]" />
-                </div>
-                <div className="w-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 tracking-tight text-center md:text-left">
-                    第四堂：樂高式開發，多樣化功能實戰擴充
-                  </h3>
-                  <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
-                    網頁必須具備實用性才能創造轉換率。<br /><br />
-                    在這個階段，我們將教導如何為網頁加入各式各樣的互動功能：從平滑的圖片輪播、自動寄信的聯絡表單，到懸浮的客服按鈕。就像拼樂高一樣，把需要的功能一個個組裝進你的網站中。
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* 階段 5：SEO 與上線 */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all">
+            {/* --- 階段 3：進階 SEO 與 GEO 雙效優化 (H2) --- */}
+            <section className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all hover:shadow-md">
               <div className="absolute top-0 left-0 w-2 h-full bg-teal-500 group-hover:bg-teal-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-50 flex items-center justify-center shrink-0 text-teal-600 mb-2 md:mb-0">
-                  <FaChartLine size={20} className="md:size-[22px]" />
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-8">
+                <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center shrink-0 text-teal-600">
+                  <FaChartLine size={22} />
                 </div>
-                <div className="w-full">
-                  <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 tracking-tight text-center md:text-left">
-                    第五堂：終極 SEO 強化與雲端公開部署
-                  </h3>
-                  <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
-                    網站做好了，絕對不能只是一座無人知曉的孤島。<br /><br />
-                    最後一堂課，我們將深潛底層，教你如何設置精準的 Meta 標籤、導入結構化資料，從根本強化 SEO 體質。最後，帶你將網站一鍵部署至雲端伺服器，並綁定專屬網域，正式向全世界公開你的數位資產！
+                <div className="w-full text-center md:text-left">
+                  <h2 className="text-2xl font-bold text-slate-800 mb-2 tracking-tight">
+                    第三階段：進階 SEO 與 GEO 雙效優化
+                  </h2>
+                  <p className="text-teal-600/80 font-bold text-sm tracking-wide">
+                    迎戰 AI 搜尋，掌握底層流量密碼
+                  </p>
+                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed">
+                    結合傳統搜尋引擎與最新 AI 搜尋趨勢，確保網站能被收錄、被理解，並獲得高排名。
                   </p>
                 </div>
               </div>
-            </div>
 
-          </div>
-
-          {/* ==========================================
-              特色標籤群
-             ========================================== */}
-          <div className="flex flex-wrap justify-center gap-3 pt-12">
-            {[
-              '贈送 Next.js 架構', 
-              '終端機環境建置', 
-              'AI 提示詞工程', 
-              '前端視覺美化',
-              '動態功能擴充',
-              'SEO 排名優化'
-            ].map((f: string, i: number) => (
-              <div key={i}>
-                <span className="text-[11px] md:text-xs font-bold tracking-widest text-indigo-600 border border-indigo-100 px-5 py-2 rounded-full bg-indigo-50/50 shadow-sm hover:bg-indigo-100 transition-colors cursor-default inline-block">
-                  # {f}
-                </span>
+              {/* 課程列表 (H3) */}
+              <div className="space-y-0 pl-2 md:pl-4">
+                {[
+                  { 
+                    title: "寫出 Google 最愛的文章結構（內容自動生成器）", 
+                    desc: "不知道文章怎麼寫才會排在搜尋結果第一頁？我們會送你專屬的「寫作機器人指令」，讓 AI 自動幫你寫出既通順，又完全符合 Google 搜尋引擎喜好（SEO 標籤設定）的高品質文章。" 
+                  },
+                  { 
+                    title: "讓你的網站在搜尋結果中更亮眼（結構化資料）", 
+                    desc: "為什麼別人的搜尋結果有星星評分或漂亮的圖片？我們會教你加入特殊的「名牌」，讓 Google 更認識你。同時設定好縮圖，讓別人把你的網站貼到 LINE 或臉書時，會跑出最精美的預覽圖。" 
+                  },
+                  { 
+                    title: "連圖片也能幫你帶來流量（網站速度極致優化）", 
+                    desc: "Google 其實看不懂圖片，所以我們要教你怎麼幫圖片「貼標籤」，讓客人在搜尋圖片時也能找到你。我們還會做網站底層的大掃除，讓網站達到 Google 最嚴格的速度及格線，大幅提升網站評分。" 
+                  },
+                  { 
+                    title: "迎戰 AI 搜尋的新時代（GEO 生成式引擎優化）", 
+                    desc: "現在很多人都改用 AI 找答案了！這堂課會教你最新的「GEO」技術，在網頁內埋入證明你專業度和權威感的程式碼，確保未來不管是傳統 Google 還是新一代的 AI 搜尋引擎，都能優先推薦你的網站。" 
+                  },
+                  { 
+                    title: "用數據看見你的成長（收錄驗證與數據分析）", 
+                    desc: "網站做好後，我們要把網站「主動提交」給 Google 確保它真的被看見。接著帶你裝上免費的追蹤工具（Google Analytics 等），讓你清楚知道每天有多少人來看、大家都在看什麼，做行銷不再像瞎子摸象！" 
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4 items-start relative pb-8 last:pb-0">
+                    <div className="w-7 h-7 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center shrink-0 text-xs font-black z-10 shadow-sm border border-teal-200">
+                      {idx + 1}
+                    </div>
+                    {idx !== 4 && <div className="absolute left-[13px] top-7 bottom-0 w-[2px] bg-teal-50 -z-0"></div>}
+                    <div className="pt-0.5">
+                      <h3 className="text-[16px] font-bold text-slate-800 mb-1">{item.title}</h3>
+                      <p className="text-[14px] text-slate-600 leading-relaxed text-justify">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
+
           </div>
 
           {/* ==========================================
-              底部 CTA 諮詢區
-             ========================================== */}
+              底部 CTA 諮詢區 (H2)
+              ========================================== */}
           <div className="mt-16 text-center border-t border-slate-200 pt-12">
-            <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-4">
+            <h2 className="text-2xl font-bold text-slate-900 tracking-tight mb-4">
               準備好打造你的專屬網站了嗎？
-            </h3>
+            </h2>
             <p className="text-slate-500 text-sm mb-8 font-medium tracking-wide">
               立即加入實戰課程，用最聰明的方式掌握現代化網頁開發技術。
             </p>
             <Link 
               href="/enroll" 
-              className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-indigo-600 text-white rounded-full text-[13px] font-bold tracking-[0.2em] hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all shadow-md uppercase active:scale-95"
+              className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-indigo-600 text-white rounded-full text-[14px] font-bold tracking-[0.1em] hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all shadow-md uppercase active:scale-95"
             >
-              立刻報名課程 <FaArrowRight size={16} />
+              <FaRocket size={16} /> 立刻報名課程 <FaArrowRight size={14} />
             </Link>
           </div>
 

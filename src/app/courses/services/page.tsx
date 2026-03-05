@@ -165,8 +165,8 @@ export default function ServicesPage() {
                     </span>
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
-                    還在人工回覆訊息、手動抄寫客戶名單？<br />
-                    我們協助您串接 LINE Bot 客服、自動化寄信系統、Google 試算表即時連動，大幅降低行政成本，打造 24/7 不間斷的營業自動化機器。
+                    還在人工回覆訊息、手動抄寫客戶名單，手動打報告？<br />
+                    我們協助您依據店家開發出客制自動化的程式機器人，增加作業效率，大幅降低行政成本。
                   </p>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function ServicesPage() {
                   </h3>
                   <p className="text-slate-600 font-normal leading-relaxed text-[15px] md:text-[16px] text-justify md:text-left w-full">
                     網站突然掛掉？版面跑掉？功能異常？<br />
-                    我們提供單次的技術救援，以及彈性的長期網頁維護方案。定期幫您備份、升級套件、監測效能，讓您的數位資產隨時保持在最健康的狀態。
+                    我們提供單次的技術救援，以及彈性的長期網頁維護方案。協助升級套件、監測效能，讓您的數位資產隨時保持在最健康的狀態。
                   </p>
                 </div>
               </div>

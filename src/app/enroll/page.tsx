@@ -56,26 +56,46 @@ export default function EnrollPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
+<div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-24 relative overflow-x-hidden bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]">
       
       <div className="absolute top-[5%] -left-32 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute top-[40%] -right-32 w-[400px] h-[400px] bg-indigo-400/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <main className="max-w-3xl mx-auto px-6 pt-10 md:pt-16 relative z-10">
         
-        <MotionWrapper type="fadeIn" className="text-center mb-10">
+      <MotionWrapper type="fadeIn" className="text-center mb-10">
           <span className="text-blue-600 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase block mb-4">
             Join The Masterclass
           </span>
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight tracking-tight">
             打造你的專屬功能，<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600">
               立刻報名實戰課程
             </span>
           </h1>
-          <p className="text-slate-500 font-medium max-w-xl mx-auto">
+          <p className="text-slate-500 font-medium max-w-xl mx-auto mb-0"> {/* 減少了下邊距 mb-10 -> mb-6 */}
             填寫下方基本資料，我們將盡快與您聯繫並開通課程權限。
           </p>
+
+          {/* 調整後的按鈕區域 */}
+          <div className="flex justify-center mt-2"> {/* 減少了上邊距 mt-8 -> mt-4 */}
+            <a 
+              href="https://seo-scorer-henna.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center px-8 py-2.5 font-bold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 to-indigo-500 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95"
+            > {/* py-4 -> py-2.5 讓高度變矮 */}
+              免費評估我的網站
+              <svg 
+                className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </div>
         </MotionWrapper>
 
         <MotionWrapper type="fadeInUp">
@@ -166,7 +186,7 @@ export default function EnrollPage() {
     required 
     type="text" 
     name="entry.282687606" 
-    placeholder="請輸入您的 FB 名稱 or 個人主頁網址"
+    placeholder="請輸入您的 FB 名稱 "
     className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
   />
 </div>
@@ -195,7 +215,7 @@ export default function EnrollPage() {
     required 
     type="text" 
     name="entry.2101562578" 
-    placeholder="請輸入您的 LINE ID 或名稱"
+    placeholder="請輸入您的 LINE 名稱"
     className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all"
   />
 </div>
