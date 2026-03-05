@@ -178,7 +178,7 @@ export default function AiSeoPage() {
               運用 Next.js 極速架構，奪回數位時代的流量掌控權。
             </p>
             <Link 
-              href="/contact" 
+              href="/enroll" 
               className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-slate-900 text-white rounded-full text-[13px] font-bold tracking-[0.2em] hover:bg-slate-800 hover:shadow-lg transition-all shadow-md uppercase active:scale-95"
             >
               啟動架站計畫 <FaArrowRight size={16} />

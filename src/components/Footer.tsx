@@ -55,7 +55,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
     {[
       { name: '關於智網', path: '/about', img: '/images/footer/9.webp' },
-      { name: '自架優點', path: '/advantages', img: '/images/footer/6.webp' },
+      { name: '自架優點', path: '/pro', img: '/images/footer/6.webp' },
       { name: '教學內容', path: '/courses', img: '/images/footer/7.webp' },
       { name: '報名課程', path: '/enroll', img: '/images/footer/8.webp' }
     ].map((item, idx) => (
@@ -98,7 +98,7 @@ export default function Footer() {
                 <a href="https://www.facebook.com/profile.php?id=61588071577543&locale=zh_TW" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white text-[#1877F2] flex items-center justify-center hover:scale-105 transition-transform border border-slate-100 shadow-md">
                   <FaFacebookF size={20} />
                 </a>
-                <a href="https://line.me/R/ti/p/@yourid" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:scale-105 transition-transform border border-slate-100 shadow-md">
+                <a href="https://line.me/R/ti/p/@591caxlt" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center hover:scale-105 transition-transform border border-slate-100 shadow-md">
                   <FaLine size={26} />
                 </a>
                 
@@ -130,7 +130,7 @@ export default function Footer() {
             
             {/* Line 帳號資訊 */}
             <a 
-              href="https://line.me/R/ti/p/@yourid" 
+              href="https://line.me/R/ti/p/@591caxlt" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex flex-col items-start lg:items-end gap-1 group"
@@ -141,7 +141,7 @@ export default function Footer() {
               <div className="flex items-center gap-2 mt-1">
                 <span className="h-[2px] w-6 bg-blue-500/30 hidden lg:block rounded-full"></span>
                 <span className="text-[12px] text-blue-600 font-bold tracking-widest bg-blue-50 px-2.5 py-1 rounded-md">
-                  @YOUR_LINE_ID
+                     @591caxlt
                 </span>
               </div>
             </a>
@@ -154,10 +154,10 @@ export default function Footer() {
               <div className="flex items-center gap-2 mt-1">
                 <span className="h-[2px] w-6 bg-blue-500/30 hidden lg:block rounded-full"></span>
                 <a 
-                  href="mailto:contact@zhiwang.com" 
+                  href="jimmyforjob2@gmail.com" 
                   className="text-[12px] text-blue-600 font-bold tracking-wider bg-blue-50 px-2.5 py-1 rounded-md hover:bg-blue-100 transition-all"
                 >
-                  contact@zhiwang.com
+                  jimmyforjob2@gmail.com
                 </a>
               </div>
             </div>

@@ -187,7 +187,7 @@ export default function FeatureDetailPage() {
                 </a>
 
                 <Link 
-                  href="/booking" 
+                  href="/enroll" 
                   className="w-full max-w-[300px] md:max-w-none md:w-auto md:min-w-[260px] py-3.5 bg-white text-blue-600 rounded-xl text-[14px] font-black tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.8)] flex items-center justify-center gap-3 group whitespace-nowrap border-2 border-blue-600 hover:border-transparent relative overflow-hidden active:scale-95"
                 >
                   <span className="relative z-10 flex items-center gap-3">

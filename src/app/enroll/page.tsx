@@ -10,7 +10,8 @@ import {
   FaLightbulb,
   FaFacebook,
   FaCircleCheck,
-  FaXmark
+  FaXmark,
+  FaLine
 } from 'react-icons/fa6'
 import MotionWrapper from '@/components/MotionWrapper'
 
@@ -142,35 +143,62 @@ export default function EnrollPage() {
                   className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all resize-none"
                 ></textarea>
               </div>
+{/* 5. 臉書帳號 */}
+<div className="space-y-3">
+  {/* 使用 justify-start 讓標籤與按鈕緊靠 */}
+  <div className="flex items-center justify-start gap-3">
+    <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
+      臉書帳號名稱 / 連結 <span className="text-red-500">*</span>
+    </label>
+    {/* 臉書圖標按鈕：緊跟文字 */}
+    <a 
+      href="https://www.facebook.com/profile.php?id=61588071577543&locale=zh_TW" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-600 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300"
+      title="點擊前往臉書專頁"
+    >
+      <FaFacebook className="text-2xl" /> 
+      <span className="text-xs font-bold">點擊前往</span>
+    </a>
+  </div>
+  <input 
+    required 
+    type="text" 
+    name="entry.282687606" 
+    placeholder="請輸入您的 FB 名稱 or 個人主頁網址"
+    className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
+  />
+</div>
 
-              {/* 5. 臉書帳號 */}
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
-                  <FaFacebook className="text-blue-500" /> 臉書帳號名稱 / 連結 <span className="text-red-500">*</span>
-                </label>
-                <input 
-                  required 
-                  type="text" 
-                  name="entry.282687606" 
-                  placeholder="請輸入您的 FB 名稱 or 個人主頁網址"
-                  className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all"
-                />
-              </div>
-
-              {/* 6. LINE 帳號 */}
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
-                  <span className="text-green-500 font-black">LINE</span> LINE ID / 顯示名稱 <span className="text-red-500">*</span>
-                </label>
-                <input 
-                  required 
-                  type="text" 
-                  name="entry.2101562578" 
-                  placeholder="請輸入您的 LINE ID 或名稱"
-                  className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all"
-                />
-              </div>
-
+{/* 6. LINE 帳號 */}
+<div className="space-y-3">
+  {/* 使用 justify-start 讓標籤與按鈕緊靠 */}
+  <div className="flex items-center justify-start gap-3">
+    <label className="flex items-center gap-2 text-sm font-bold text-slate-700">
+      LINE ID / 顯示名稱 <span className="text-red-500">*</span>
+    </label>
+    {/* LINE 圖標按鈕：緊跟文字，強制指定綠色 */}
+    <a 
+      href="https://line.me/R/ti/p/@591caxlt" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 rounded-full hover:bg-green-500 hover:text-white transition-all duration-300"
+      title="點擊加入 LINE 好友"
+    >
+      {/* 強制 text-green-600 確保在手機端也是綠色 */}
+      <FaLine className="text-2xl text-green-600 group-hover:text-white" />
+      <span className="text-xs font-bold">點擊加好友</span>
+    </a>
+  </div>
+  <input 
+    required 
+    type="text" 
+    name="entry.2101562578" 
+    placeholder="請輸入您的 LINE ID 或名稱"
+    className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-green-500 focus:ring-4 focus:ring-green-500/10 transition-all"
+  />
+</div>
               <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-4 mt-4">
                 <p className="text-[13px] text-indigo-700 font-medium leading-relaxed">
                   🚀 <b>報名最後一步：</b><br />

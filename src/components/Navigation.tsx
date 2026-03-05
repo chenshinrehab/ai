@@ -100,7 +100,7 @@ export default function Navigation() {
                 <FaFacebookF size={22} className="hidden md:block" />
               </a>
 
-              <a href="https://line.me/R/ti/p/@yourid" target="_blank" rel="noopener noreferrer" 
+              <a href="https://line.me/R/ti/p/@591caxlt" target="_blank" rel="noopener noreferrer" 
                  className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-white text-[#06C755] flex items-center justify-center border border-green-50 shadow-sm">
                 <FaLine size={20} className="md:hidden" />
                 <FaLine size={28} className="hidden md:block" />
