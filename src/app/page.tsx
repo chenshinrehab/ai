@@ -180,11 +180,25 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-4">
-                <button className="inline-block px-10 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all text-sm tracking-widest font-bold uppercase">
-                  開始你的架站計畫
-                </button>
-              </div>
+              <div className="pt-8 flex flex-col sm:flex-row items-center gap-4">
+  {/* 主按鈕：開始計畫 */}
+  <Link href="/enroll">
+    <button className="w-full sm:w-auto inline-block px-10 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:shadow-lg transition-all text-sm tracking-widest font-bold uppercase">
+      開始你的架站計畫
+    </button>
+  </Link>
+
+  {/* 次按鈕：SEO 評估 */}
+  <a 
+    href="https://seo-scorer-henna.vercel.app/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <button className="w-full sm:w-auto inline-block px-10 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-full hover:bg-blue-50 transition-all text-sm tracking-widest font-bold uppercase">
+      免費評估我的網站
+    </button>
+  </a>
+</div>
             </div>
           </section>
         </MotionWrapper>
