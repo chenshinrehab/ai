@@ -69,9 +69,9 @@ export default function EnrollPage() {
           </span>
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight tracking-tight">
             打造你的專屬功能，<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600">
-              立刻報名實戰課程
-            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
+  立刻報名實戰課程
+</span>
           </h1>
           <p className="text-slate-500 font-medium max-w-xl mx-auto mb-0"> {/* 減少了下邊距 mb-10 -> mb-6 */}
             填寫下方基本資料，我們將盡快與您聯繫並開通課程權限。
