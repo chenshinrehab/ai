@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image' 
 import { 
   FaRocket, 
   FaChartLine, 
@@ -65,10 +66,22 @@ export default function CourseSyllabusPage() {
                   <p className="text-rose-600/80 font-bold text-sm tracking-wide">
                     從 0 到 1 的突破，打好完美地基
                   </p>
-                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed">
+                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
                     讓完全沒有基礎的學生能跑起高質量的網站，並讓已有網站的學生找到優化方向。
                   </p>
                 </div>
+              </div>
+
+              {/* 圖片區塊：my-10 確保上下間距一致 */}
+              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 -mt-8 mb-8">
+                <Image 
+                  src="/images/courses/3.webp" 
+                  alt="第一階段：網站建置與基礎架構"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-cover"
+                />
               </div>
 
               {/* 課程列表 (H3) */}
@@ -143,10 +156,21 @@ export default function CourseSyllabusPage() {
                   <p className="text-blue-600/80 font-bold text-sm tracking-wide">
                     樂高式開發，打造高轉換率網站
                   </p>
-                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed">
+                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
                     提供各式實用的外掛與程式碼模組，讓網站不只是「好看」，還要「好用」且具備商業功能。
                   </p>
                 </div>
+              </div>
+
+              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 -mt-8 mb-8">
+                <Image 
+                  src="/images/courses/4.webp" 
+                  alt="第二階段：互動功能與體驗強化"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-cover"
+                />
               </div>
 
               {/* 課程列表 (H3) */}
@@ -201,12 +225,23 @@ export default function CourseSyllabusPage() {
                   <p className="text-teal-600/80 font-bold text-sm tracking-wide">
                     迎戰 AI 搜尋，掌握底層流量密碼
                   </p>
-                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed">
+                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
                     結合傳統搜尋引擎與最新 AI 搜尋趨勢，確保網站能被收錄、被理解，並獲得高排名。
                   </p>
                 </div>
               </div>
 
+{/* 圖片區塊：my-10 確保上下間距一致 */}
+<div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 -mt-8 mb-8">
+                <Image 
+                  src="/images/courses/5.webp" 
+                  alt="第三階段：進階 SEO 與 GEO 雙效優化"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-cover"
+                />
+              </div>
               {/* 課程列表 (H3) */}
               <div className="space-y-0 pl-2 md:pl-4">
                 {[
