@@ -10,7 +10,7 @@ const inter = Inter({
   display: 'swap', // 確保字體下載完前先用系統字體顯示，避免白屏
 })
 
-const SITE_URL = 'https://www.dryichen.com.tw' // 建議改為你的智網網址
+const SITE_URL = 'https://ai-zeta-dusky-55.vercel.app/' // 建議改為你的智網網址
 
 export const viewport: Viewport = {
   themeColor: '#ffffff',
