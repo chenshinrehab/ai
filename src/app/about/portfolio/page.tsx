@@ -119,7 +119,7 @@ export default function PortfolioPage() {
             <div className="bg-slate-50 border-t border-slate-100 p-8 md:p-10">
   <div className="flex items-center gap-3 mb-6">
     <FaRobot className="text-blue-500" size={20} />
-    <h3 className="text-lg font-bold text-slate-800">網頁實際成果展示(上架兩個月)</h3>
+    <h3 className="text-lg font-bold text-slate-800">網頁實際成果展示(上架約一個月)</h3>
   </div>
 
 
@@ -127,13 +127,17 @@ export default function PortfolioPage() {
     {[
       { src: "/images/about/new.webp", text: "AI推薦病患來診所" },
       { src: "/images/about/prp.webp", text: "PRP被收錄且圖片排在第三" },
-      { src: "/images/about/prpa.webp", text: "PRP在區域AI推薦第一" },
-      { src: "/images/about/eswt.webp", text: "PRP被收錄且圖片排在第二" },
-      { src: "/images/about/eswta.webp", text: "震波在區域推薦第一" },
+      { src: "/images/about/prpa.webp", text: "PRP在區域gemini推薦第一" },
+      { src: "/images/about/prpg.webp", text: "PRP在區域ChatGPT推薦第一" },
+      { src: "/images/about/eswt.webp", text: "震波被收錄且圖片排在第二" },
+      { src: "/images/about/eswta.webp", text: "震波在區域gemini推薦第一" },
+      { src: "/images/about/eswtg.webp", text: "震波在區域ChatGPT推薦第一" },
       { src: "/images/about/moun.webp", text: "猛健樂搜尋新竹排第一" },
-      { src: "/images/about/mouna.webp", text: "猛健樂在區域推薦第一" },
+      { src: "/images/about/mouna.webp", text: "猛健樂在gemini區域推薦第一" },
+      { src: "/images/about/moung.webp", text: "猛健樂在ChatGPT區域推薦第一" },
       { src: "/images/about/bone.webp", text: "照骨齡搜尋新竹診所第一" },
-      { src: "/images/about/bonea.webp", text: "照骨齡在區域推薦第一" }
+      { src: "/images/about/bonea.webp", text: "照骨齡在gemini區域推薦第一" },
+      { src: "/images/about/boneg.webp", text: "照骨齡在ChatGPT區域推薦第一" }
 
     ].map((img, idx) => (
 
