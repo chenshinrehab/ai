@@ -86,16 +86,16 @@ export default function WpVsNextPage() {
             </p>
 
             {/* 圖片展示 */}
-            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50">
-              <Image 
-                src="/images/pro/1.webp" 
-                alt="Next.js 效能展示"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 800px"
-                className="object-cover"
-              />
-            </div>
+            <div className="relative aspect-[4/3] md:aspect-[16/9] w-[calc(100%+3rem)] -ml-6 md:w-full md:ml-0 rounded-none md:rounded-2xl overflow-hidden border-y md:border border-slate-200 bg-slate-50">
+  <Image 
+    src="/images/pro/1.webp" 
+    alt="Next.js 效能展示"
+    fill
+    priority
+    sizes="(max-width: 768px) 100vw, 1200px"
+    className="object-cover object-top" // 確保圖片從頂部開始裁切，保留重要資訊
+  />
+</div>
           </div>
 
           {/* ==========================================

@@ -54,35 +54,51 @@ export default function CourseSyllabusPage() {
             
             {/* --- 階段 1：基礎架構與本地運行 (H2) --- */}
             <section className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all hover:shadow-md">
-              <div className="absolute top-0 left-0 w-2 h-full bg-rose-500 group-hover:bg-rose-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-8">
-                <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center shrink-0 text-rose-600">
-                  <FaTerminal size={22} />
-                </div>
-                <div className="w-full text-center md:text-left">
-                <h2 className="text-2xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400">
-  第一階段：網站建置與基礎架構
-</h2>
-                  <p className="text-rose-600/80 font-bold text-sm tracking-wide">
-                    從 0 到 1 的突破，打好完美地基
-                  </p>
-                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
-                    讓完全沒有基礎的學生能跑起高質量的網站，並讓已有網站的學生找到優化方向。
-                  </p>
-                </div>
-              </div>
+  {/* 左側玫瑰色裝飾條 */}
+  <div className="absolute top-0 left-0 w-2 h-full bg-rose-500 group-hover:bg-rose-600 transition-colors"></div>
+  
+  {/* 標題與文字區塊 */}
+  <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-0">
+    <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center shrink-0 text-rose-600">
+      <FaTerminal size={22} />
+    </div>
+    <div className="w-full text-center md:text-left">
+      <h2 className="text-2xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400">
+        第一階段：網站建置與基礎架構
+      </h2>
+      <p className="text-rose-600/80 font-bold text-sm tracking-wide">
+        從 0 到 1 的突破，打好完美地基
+      </p>
+      <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
+        讓完全沒有基礎的學生能跑起高質量的網站，並讓已有網站的學生找到優化方向。
+      </p>
+    </div>
+  </div>
 
-              {/* 圖片區塊：my-10 確保上下間距一致 */}
-              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 -mt-8 mb-8">
-                <Image 
-                  src="/images/courses/3.webp" 
-                  alt="第一階段：網站建置與基礎架構"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 800px"
-                  className="object-cover"
-                />
-              </div>
+  {/* --- 圖片展示區塊：採用統一的大圖風格 --- */}
+  {/* -ml-6: 避開左側 rose-500 裝飾線，留出呼吸空間
+      w-[calc(100%+3.5rem)]: 手機版視覺最大化
+  */}
+  <div className="relative aspect-[4/3] md:aspect-[16/9] w-[calc(100%+3.5rem)] -ml-6 md:w-full md:ml-0 -mt-4 mb-8 group-hover:scale-[1.01] transition-transform duration-300">
+    
+    {/* 圓角框容器：保留圓弧角設計 */}
+    <div className="absolute inset-0 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+      <Image 
+        src="/images/courses/6.webp" 
+        alt="第一階段：網站建置與基礎架構"
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 800px"
+        /* object-contain: 確保架構圖表文字完整顯示
+           p-2: 讓內容不貼死圓角框，看起來更高級
+        */
+        className="object-contain p-2 md:p-1" 
+      />
+    </div>
+  </div>
+  {/* --- 圖片展示區塊結束 --- */}
+  
+
 
               {/* 課程列表 (H3) */}
               <div className="space-y-0 pl-2 md:pl-4">
@@ -144,34 +160,47 @@ export default function CourseSyllabusPage() {
 
             {/* --- 階段 2：互動功能與體驗強化 (H2) --- */}
             <section className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all hover:shadow-md">
-              <div className="absolute top-0 left-0 w-2 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-8">
-                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
-                  <FaCubes size={22} />
-                </div>
-                <div className="w-full text-center md:text-left">
-                <h2 className="text-2xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-emerald-500 to-cyan-300">
-  第二階段：互動功能與體驗強化
-</h2>
-                  <p className="text-blue-600/80 font-bold text-sm tracking-wide">
-                    樂高式開發，打造高轉換率網站
-                  </p>
-                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
-                    提供各式實用的外掛與程式碼模組，讓網站不只是「好看」，還要「好用」且具備商業功能。
-                  </p>
-                </div>
-              </div>
+  {/* 左側藍色裝飾條 */}
+  <div className="absolute top-0 left-0 w-2 h-full bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
+  
+  {/* 標題與文字區塊 */}
+  <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-0">
+    <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
+      <FaCubes size={22} />
+    </div>
+    <div className="w-full text-center md:text-left">
+      <h2 className="text-2xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-emerald-500 to-cyan-300">
+        第二階段：互動功能與體驗強化
+      </h2>
+      <p className="text-blue-600/80 font-bold text-sm tracking-wide">
+        樂高式開發，打造高轉換率網站
+      </p>
+      <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
+        提供各式實用的外掛與程式碼模組，讓網站不只是「好看」，還要「好用」且具備商業功能。
+      </p>
+    </div>
+  </div>
 
-              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 -mt-8 mb-8">
-                <Image 
-                  src="/images/courses/4.webp" 
-                  alt="第二階段：互動功能與體驗強化"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 800px"
-                  className="object-cover"
-                />
-              </div>
+  {/* --- 修正後的圖片展示區塊 --- */}
+  {/* 1. -ml-6: 向左移動 24px (原為 -ml-8)，這樣左側會留出約 8px 的空間，不會撞到藍色條。
+      2. w-[calc(100%+3.5rem)]: 配合左移量的調整，讓右側依然能盡量貼邊。
+  */}
+  <div className="relative aspect-[4/3] md:aspect-[16/9] w-[calc(100%+3.5rem)] -ml-6 md:w-full md:ml-0 -mt-4 mb-8 group-hover:scale-[1.01] transition-transform duration-300">
+    
+    {/* 圓角框容器：保留 rounded-2xl */}
+    <div className="absolute inset-0 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+      <Image 
+        src="/images/courses/7.webp" 
+        alt="第二階段：互動功能與體驗強化"
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 800px"
+        className="object-contain p-2 md:p-1" 
+      />
+    </div>
+  </div>
+  {/* --- 圖片展示區塊結束 --- */}
+
 
               {/* 課程列表 (H3) */}
               <div className="space-y-0 pl-2 md:pl-4">
@@ -213,35 +242,51 @@ export default function CourseSyllabusPage() {
 
             {/* --- 階段 3：進階 SEO 與 GEO 雙效優化 (H2) --- */}
             <section className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm shadow-slate-200/50 relative overflow-hidden group transition-all hover:shadow-md">
-              <div className="absolute top-0 left-0 w-2 h-full bg-teal-500 group-hover:bg-teal-600 transition-colors"></div>
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-8">
-                <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center shrink-0 text-teal-600">
-                  <FaChartLine size={22} />
-                </div>
-                <div className="w-full text-center md:text-left">
-                <h2 className="text-2xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-400">
-  第三階段：進階 SEO 與 GEO 雙效優化
-</h2>
-                  <p className="text-teal-600/80 font-bold text-sm tracking-wide">
-                    迎戰 AI 搜尋，掌握底層流量密碼
-                  </p>
-                  <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
-                    結合傳統搜尋引擎與最新 AI 搜尋趨勢，確保網站能被收錄、被理解，並獲得高排名。
-                  </p>
-                </div>
-              </div>
+  {/* 左側青色裝飾條 */}
+  <div className="absolute top-0 left-0 w-2 h-full bg-teal-500 group-hover:bg-teal-600 transition-colors"></div>
+  
+  {/* 標題與文字區塊 */}
+  <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 mb-8 border-b border-slate-100 pb-0">
+    <div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center shrink-0 text-teal-600">
+      <FaChartLine size={22} />
+    </div>
+    <div className="w-full text-center md:text-left">
+      <h2 className="text-2xl font-bold mb-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-400">
+        第三階段：進階 SEO 與 GEO 雙效優化
+      </h2>
+      <p className="text-teal-600/80 font-bold text-sm tracking-wide">
+        迎戰 AI 搜尋，掌握底層流量密碼
+      </p>
+      <p className="text-slate-500 mt-3 text-[15px] leading-relaxed mb-0">
+        結合傳統搜尋引擎與最新 AI 搜尋趨勢，確保網站能被收錄、被理解，並獲得高排名。
+      </p>
+    </div>
+  </div>
 
-{/* 圖片區塊：my-10 確保上下間距一致 */}
-<div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 -mt-8 mb-8">
-                <Image 
-                  src="/images/courses/5.webp" 
-                  alt="第三階段：進階 SEO 與 GEO 雙效優化"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 800px"
-                  className="object-cover"
-                />
-              </div>
+  {/* --- 修改後的圖片展示區塊 --- */}
+  {/* -ml-6: 向右縮回，避開左側 teal-500 裝飾線
+      w-[calc(100%+3.5rem)]: 在手機上達到最大的視覺佔比
+  */}
+  <div className="relative aspect-[4/3] md:aspect-[16/9] w-[calc(100%+3.5rem)] -ml-6 md:w-full md:ml-0 -mt-4 mb-8 group-hover:scale-[1.01] transition-transform duration-300">
+    
+    {/* 圓角框容器：保留 rounded-2xl 並維持一致的背景與邊框 */}
+    <div className="absolute inset-0 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+      <Image 
+        src="/images/courses/8.webp" 
+        alt="第三階段：進階 SEO 與 GEO 雙效優化"
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 800px"
+        /* object-contain: 確保 SEO 數據、圖表內容完整顯示
+           p-2: 讓圖片內容與圓角邊界維持精緻距離
+        */
+        className="object-contain p-2 md:p-1" 
+      />
+    </div>
+  </div>
+  {/* --- 圖片展示區塊結束 --- */}
+  
+
               {/* 課程列表 (H3) */}
               <div className="space-y-0 pl-2 md:pl-4">
                 {[
