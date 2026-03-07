@@ -71,7 +71,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center gap-3 md:gap-4 group md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
               <div className="relative w-10 h-10 md:w-16 md:h-16 overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-white shrink-0 flex items-center justify-center">
                   <Image 
-                    src="/images/favicon.svg" 
+                    src="/images/favicon1.svg" 
                     alt="智網 Ai 引擎 Logo" 
                     fill 
                     sizes="(max-width: 768px) 40px, 64px"
