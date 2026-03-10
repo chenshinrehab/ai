@@ -42,7 +42,7 @@ const serviceItems = [
     title: '網頁架設教學與 SEO', 
     desc: '網域與程式碼永遠屬於你',
     tag: 'EDUCATION',
-    image: '/images/about/7.webp',
+    image: '/images/about/8.webp',
     link: 'https://ai-zeta-dusky-55.vercel.app/'
   }
 ];

@@ -126,7 +126,7 @@ export default function PortfolioPage() {
   <div className="flex overflow-x-auto gap-5 pb-6 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent snap-x">
     {[
       { src: "/images/about/new.webp", text: "AI推薦病患來診所" },
-      { src: "/images/about/prp.webp", text: "PRP被收錄且圖片排在第三" },
+      { src: "/images/about/prpgo.webp", text: "PRP被收錄且圖片排在第一" },
       { src: "/images/about/prpa.webp", text: "PRP在區域gemini推薦第一" },
       { src: "/images/about/prpg.webp", text: "PRP在區域ChatGPT推薦第一" },
       { src: "/images/about/eswt.webp", text: "震波被收錄且圖片排在第二" },
