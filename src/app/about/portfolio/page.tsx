@@ -243,7 +243,7 @@ export default function PortfolioPage() {
             >
               <div className="absolute inset-0 bg-indigo-900/5 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
               <img
-                src="/images/about/6.webp" // 請確保圖片路徑正確或替換
+                src="/images/about/8.webp" // 請確保圖片路徑正確或替換
                 alt="Next.js 網頁架設教學與 SEO 強化"
                 className="absolute inset-0 w-full h-full object-cover object-top"
               />

@@ -78,14 +78,33 @@ export default function EnrollPage() {
           </p>
 
           {/* 調整後的按鈕區域 */}
-          <div className="flex justify-center mt-2"> {/* 減少了上邊距 mt-8 -> mt-4 */}
+<div className="flex justify-center mt-2 gap-4"> {/* 使用 gap-4 讓按鈕之間有間距 */}
+            {/* 第一顆按鈕：免費評估我的網站 */}
             <a 
               href="https://seo-scorer-henna.vercel.app/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center px-8 py-2.5 font-bold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 to-indigo-500 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95"
-            > {/* py-4 -> py-2.5 讓高度變矮 */}
+            >
               免費評估我的網站
+              <svg 
+                className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+
+            {/* 第二顆按鈕：生成高品質文章 (新增) */}
+            <a 
+              href="https://article-flame-mu.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center px-8 py-2.5 font-bold text-white transition-all duration-200 bg-gradient-to-r from-purple-600 to-pink-500 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-600 hover:shadow-lg hover:shadow-purple-500/30 active:scale-95"
+            >
+              生成高品質文章
               <svg 
                 className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" 
                 fill="none" 

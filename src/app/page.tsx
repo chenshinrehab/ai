@@ -180,22 +180,35 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-8 flex flex-col sm:flex-row items-center gap-4">
-  {/* 主按鈕：開始計畫 */}
-  <Link href="/enroll">
-    <button className="w-full sm:w-auto inline-block px-10 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:shadow-lg transition-all text-sm tracking-widest font-bold uppercase">
+<div className="pt-8 flex flex-col items-center gap-4">
+  {/* 主按鈕：開始計畫 (強烈：深藍底) */}
+  <Link href="/enroll" className="w-full sm:w-auto">
+    <button className="w-full sm:min-w-[320px] inline-block px-10 py-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:shadow-lg transition-all text-sm tracking-widest font-bold uppercase">
       開始你的架站計畫
     </button>
   </Link>
 
-  {/* 次按鈕：SEO 評估 */}
+  {/* 次按鈕：SEO 評估 (輕盈：白底藍框) */}
   <a 
     href="https://seo-scorer-henna.vercel.app/" 
     target="_blank" 
     rel="noopener noreferrer"
+    className="w-full sm:w-auto"
   >
-    <button className="w-full sm:w-auto inline-block px-10 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-full hover:bg-blue-50 transition-all text-sm tracking-widest font-bold uppercase">
+    <button className="w-full sm:min-w-[320px] inline-block px-10 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-full hover:bg-blue-50 transition-all text-sm tracking-widest font-bold uppercase">
       免費評估我的網站
+    </button>
+  </a>
+
+  {/* 變化按鈕：高品質文章 (中度顯眼：中度藍底 + 深藍邊框) */}
+  <a 
+    href="https://article-flame-mu.vercel.app/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="w-full sm:w-auto"
+  >
+    <button className="w-full sm:min-w-[320px] inline-block px-10 py-4 bg-blue-100 text-blue-800 border-2 border-blue-300 rounded-full hover:bg-blue-200 hover:border-blue-400 hover:shadow transition-all text-sm tracking-widest font-bold uppercase">
+      生成高品質文章
     </button>
   </a>
 </div>
